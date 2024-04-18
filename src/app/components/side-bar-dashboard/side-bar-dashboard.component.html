@@ -1,0 +1,54 @@
+<div class="sidebar" data-color="red" data-image="assets/img/sidebar-5.jpg">
+  <!--
+
+      Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+      Tip 2: you can also add an image using data-image tag
+
+    -->
+
+  <div class="sidebar-wrapper">
+    <div class="logo">
+      <a href="http://www.creative-tim.com" class="simple-text"> Esprit </a>
+    </div>
+
+    <ul class="nav">
+      <li class="active">
+        <a href="/evenement">
+          <i class="pe-7s-note2"></i>
+          <p>Liste des Evenement</p>
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['/reservation']">
+          <i class="pe-7s-news-paper"></i>
+          <p>Liste des reservation</p>
+        </a>
+      </li>
+      <li>
+        <a href="/ticket">
+          <i class="pe-7s-note2"></i>
+          <p>Liste des tickets</p>
+        </a>
+      </li>
+      <li>
+        <a href="typography.html">
+          <i class="pe-7s-news-paper"></i>
+          <p>Typography</p>
+        </a>
+      </li>
+      <li>
+        <a href="icons.html">
+          <i class="pe-7s-science"></i>
+          <p>Icons</p>
+        </a>
+      </li>
+
+      <li class="active-pro">
+        <a routerLink="/">
+          <i class="pe-7s-rocket"></i>
+          <p>Go to Home</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>

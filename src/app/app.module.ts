@@ -14,6 +14,11 @@ import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
+import { TemplateAllFrontComponent } from './components/template-all-front/template-all-front.component';
+import { TemplateAllBackComponent } from './components/template-all-back/template-all-back.component';
+import { FooterBackComponent } from './components/footer-back/footer-back.component';
+import { NavBarDashboardComponent } from './components/nav-bar-dashboard/nav-bar-dashboard.component';
+import { SideBarDashboardComponent } from './components/side-bar-dashboard/side-bar-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +32,11 @@ import { CourseDetailsComponent } from './components/course-details/course-detai
     LoginComponent,
     CoursesComponent,
     CourseDetailsComponent,
+    TemplateAllFrontComponent,
+    TemplateAllBackComponent,
+    SideBarDashboardComponent,
+    NavBarDashboardComponent,
+    FooterBackComponent
   ],
   imports: [
     BrowserModule,

@@ -38,6 +38,7 @@ export class ArticleDetailsComponent {
       
       this.commentService.createNewComment(this.articleId,content).subscribe(res=>{
         console.log("Comment Published Successfully","ok");
+        this.ngOnInit();
       },error=>{
         console.log("Something Went Wrong!!!");
       })
@@ -60,6 +61,9 @@ export class ArticleDetailsComponent {
     }, error=>{
       console.log("Error while fetching articles", "ok");
     })
+  }
+  scrolldown(){
+    window.scrollTo(0,document.body.scrollHeight);
   }
 
 }
