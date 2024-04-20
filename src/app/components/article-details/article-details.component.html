@@ -4,7 +4,9 @@
     id="page-banner"
     class="pt-105 pb-130 bg_cover"
     data-overlay="8"
-    style="background-image: url(../assets/assets-front/images/page-banner-1.jpg)"
+    style="
+      background-image: url(../assets/assets-front/images/page-banner-1.jpg);
+    "
   >
     <div class="container">
       <div class="row">
@@ -95,6 +97,7 @@
                           <div class="comment-author">
                             <div class="author-thum">
                               <img
+                                class="avatar"
                                 src="https://coenterprises.com.au/wp-content/uploads/2018/02/male-placeholder-image.jpeg"
                                 alt="Reviews"
                               />
@@ -110,7 +113,7 @@
                             <p>{{ comment.content }}</p>
                           </div>
                           <div class="comment-replay">
-                            <a href="#">Reply</a>
+                            <a (click)="scrolldown()">Reply</a>
                           </div>
                         </div>
                         <ng-container
@@ -122,6 +125,7 @@
                                 <div class="comment-author">
                                   <div class="author-thum">
                                     <img
+                                      class="avatar"
                                       src="https://coenterprises.com.au/wp-content/uploads/2018/02/male-placeholder-image.jpeg"
                                       alt="Reviews"
                                     />
@@ -133,11 +137,8 @@
                                     }}</span>
                                   </div>
                                 </div>
-                                <div class="comment-description pt-20">
+                                <div class="comment-description-reply pt-20">
                                   <p>{{ comment.content }}</p>
-                                </div>
-                                <div class="comment-replay">
-                                  <a (click)="scrolldown()">Reply</a>
                                 </div>
                               </div>
                               <!-- comment -->

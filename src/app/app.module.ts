@@ -19,6 +19,7 @@ import { TemplateAllBackComponent } from './components/template-all-back/templat
 import { FooterBackComponent } from './components/footer-back/footer-back.component';
 import { NavBarDashboardComponent } from './components/nav-bar-dashboard/nav-bar-dashboard.component';
 import { SideBarDashboardComponent } from './components/side-bar-dashboard/side-bar-dashboard.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { SideBarDashboardComponent } from './components/side-bar-dashboard/side-
     TemplateAllBackComponent,
     SideBarDashboardComponent,
     NavBarDashboardComponent,
-    FooterBackComponent
+    FooterBackComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,9 +46,9 @@ import { SideBarDashboardComponent } from './components/side-bar-dashboard/side-
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-
+    NgxPaginationModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -34,15 +34,21 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
-        <ng-container *ngFor="let article of allArticles">
+        <ng-container
+          *ngFor="
+            let article of allArticles
+              | paginate
+                : {
+                    itemsPerPage: 1,
+                    currentPage: currentPage,
+                    totalItems: totalPageNumber
+                  }
+          "
+        >
           <!-- single blog begin -->
           <div class="single-blog mt-30">
             <div class="blog-thum">
-              <img
-                [src]="article.imageUrl"
-                style="width: 772; height: 318"
-                alt="Blog"
-              />
+              <img [src]="article.imageUrl" alt="Blog" />
             </div>
             <div class="blog-cont">
               <a routerLink="/blog-details/{{ article.id }}"
@@ -73,24 +79,45 @@
           </div>
         </ng-container>
         <!-- single blog end -->
-        <nav class="courses-pagination mt-50">
-          <ul class="pagination justify-content-lg-end justify-content-center">
-            <li class="page-item">
-              <a href="#" aria-label="Previous">
-                <i class="fa fa-angle-left"></i>
-              </a>
-            </li>
-            <li class="page-item"><a class="active" href="#">1</a></li>
-            <li class="page-item"><a href="#">2</a></li>
-            <li class="page-item"><a href="#">3</a></li>
-            <li class="page-item">
-              <a href="#" aria-label="Next">
-                <i class="fa fa-angle-right"></i>
-              </a>
-            </li>
-          </ul>
-        </nav>
-        <!-- courses pagination -->
+
+        <!-- courses pagination begin -->
+        <pagination-template
+          #p="paginationApi"
+          (pageChange)="currentPage = $event; ngOnInit()"
+        >
+          <nav class="courses-pagination mt-50">
+            <ul
+              class="pagination justify-content-lg-end justify-content-center"
+            >
+              <li class="page-item" [class.disabled]="p.isFirstPage()">
+                <a *ngIf="!p.isFirstPage()" (click)="p.previous()">
+                  <i class="fa fa-angle-left"></i>
+                </a>
+              </li>
+              <li
+                class="page-item"
+                *ngFor="let page of p.pages"
+                [class.current]="p.getCurrent() === page.value"
+              >
+                <a
+                  (click)="p.setCurrent(page.value)"
+                  *ngIf="p.getCurrent() !== page.value"
+                >
+                  <span>{{ page.label }}</span>
+                </a>
+                <a class="active" *ngIf="p.getCurrent() === page.value">
+                  <span>{{ page.label }}</span>
+                </a>
+              </li>
+              <li class="page-item" [class.disabled]="p.isLastPage()">
+                <a *ngIf="!p.isLastPage()" (click)="p.next()">
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </pagination-template>
+        <!-- courses pagination end -->
       </div>
       <div class="col-lg-4">
         <div class="sidebar">

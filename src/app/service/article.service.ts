@@ -15,8 +15,9 @@ export class ArticleService {
     return this.http.post(BASIC_URL + `api/article`, data);
   }
 
-  getAllArticles(): Observable<any>{
-    return this.http.get(BASIC_URL + `api/article`);
+  getAllArticles(page:number): Observable<any>{
+    console.log(page);
+    return this.http.get(BASIC_URL + `api/article?page=${page}`);
   }
 
   getArticleById(articleId: number): Observable<any>{

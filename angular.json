@@ -20,7 +20,22 @@
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
             "styles": ["src/styles.css"],
-            "scripts": []
+            "scripts": [
+              "src/assets/assets-front/js/vendor/modernizr-3.6.0.min.js",
+              "src/assets/assets-front/js/vendor/jquery-1.12.4.min.js",
+              "src/assets/assets-front/js/bootstrap.min.js",
+              "src/assets/assets-front/js/slick.min.js",
+              "src/assets/assets-front/js/jquery.magnific-popup.min.js",
+              "src/assets/assets-front/js/waypoints.min.js",
+              "src/assets/assets-front/js/jquery.counterup.min.js",
+              "src/assets/assets-front/js/jquery.nice-select.min.js",
+              "src/assets/assets-front/js/jquery.nice-number.min.js",
+              "src/assets/assets-front/js/jquery.countdown.min.js",
+              "src/assets/assets-front/js/validator.min.js",
+              "src/assets/assets-front/js/ajax-contact.js",
+              "src/assets/assets-front/js/main.js",
+              "src/assets/assets-front/js/map-script.js"
+            ]
           },
           "configurations": {
             "production": {
