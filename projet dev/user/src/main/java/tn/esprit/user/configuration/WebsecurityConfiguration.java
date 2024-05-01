@@ -33,9 +33,10 @@ public class WebsecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity security) throws Exception {
         return security.csrf(AbstractHttpConfigurer::disable)
                 .authorizeRequests((authz) -> authz
-                        .requestMatchers("/user/**","/role/**","/permission/**").permitAll()
-                        .requestMatchers("/api/**").authenticated() )
-
+                        .requestMatchers("/user/**").permitAll()
+                        .requestMatchers("/api/hello").hasAuthority("ROLE_USER")  // Assuming existing code for other endpoint
+                        .requestMatchers("/back/admin").hasAuthority("ROLE_ADMIN")  // Only ADMIN can access /back/admin
+                        .anyRequest().authenticated())
                 .sessionManagement((session) -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class)

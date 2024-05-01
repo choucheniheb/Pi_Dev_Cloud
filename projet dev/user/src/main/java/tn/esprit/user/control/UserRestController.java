@@ -78,6 +78,7 @@ public class UserRestController {
             return ResponseEntity.notFound().build();
         }
     }
+
     @PostMapping("/auth")
     public ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         try {
@@ -93,6 +94,7 @@ public class UserRestController {
         UserDetails userDetails;
         try {
             userDetails = customerService.loadUserByUsername(loginRequest.getEmail());
+
         } catch (UsernameNotFoundException e) {
             // Log the user not found exception
             System.err.println("User not found: " + e.getMessage());
@@ -100,7 +102,10 @@ public class UserRestController {
         }
 
         // Generate JWT token
-        String jwt = jwtUtil.generateToken(userDetails.getUsername());
+        String jwt = jwtUtil.generateToken(userDetails);
+        System.out.println("user role: " + userDetails.getAuthorities());
+        System.out.println("token" + jwt);
+
         return ResponseEntity.ok(new LoginResponse(jwt));
     }
 

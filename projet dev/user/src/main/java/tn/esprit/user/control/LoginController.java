@@ -58,7 +58,7 @@ public class LoginController {
         }
 
         // Generate JWT token
-        String jwt = jwtUtil.generateToken(userDetails.getUsername());
+        String jwt = jwtUtil.generateToken(userDetails);
         return ResponseEntity.ok(new LoginResponse(jwt));
     }
 }

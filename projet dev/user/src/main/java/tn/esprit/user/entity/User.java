@@ -5,10 +5,8 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+
 @Entity
 @Getter
 @Setter
@@ -38,8 +36,13 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        if (this.rle != null) {
+            return Collections.singletonList(new SimpleGrantedAuthority("ROLE_" + this.rle.name()));
+        }
+        return Collections.emptyList();
     }
+
+
 
     @Override
     public String getPassword() {
