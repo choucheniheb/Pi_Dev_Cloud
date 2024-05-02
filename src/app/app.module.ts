@@ -16,10 +16,31 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
 import { TemplateAllFrontComponent } from './components/template-all-front/template-all-front.component';
 import { TemplateAllBackComponent } from './components/template-all-back/template-all-back.component';
-import { FooterBackComponent } from './components/footer-back/footer-back.component';
 import { NavBarDashboardComponent } from './components/nav-bar-dashboard/nav-bar-dashboard.component';
 import { SideBarDashboardComponent } from './components/side-bar-dashboard/side-bar-dashboard.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { EvenementComponent } from './components/evenement/evenement.component';
+import { EvenementDetailsComponent } from './components/evenement-details/evenement-details.component';
+import { CreateReservComponent } from './components/create-reserv/create-reserv.component';
+import { CreateAvisComponent } from './components/create-avis/create-avis.component';
+import { CreateArticleComponent } from './components/create-article/create-article.component';
+import { MeetingRoomComponent } from './components/meeting-room/meeting-room.component';
+import { AllArticleDashboardComponent } from './components/all-article-dashboard/all-article-dashboard.component';
+import { OptionsListComponent } from './components/options-list/options-list.component';
+import { OptionDetailsComponent } from './components/option-details/option-details.component';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
+import { CreateOptionComponent } from './components/create-option/create-option.component';
+import { CreateUniteEnseignementComponent } from './components/create-unite-enseignement/create-unite-enseignement.component';
+import { CreateEventComponent } from './components/create-event/create-event.component';
+import { StatReservationComponent } from './components/stat-reservation/stat-reservation.component';
+import { ReservationsComponent } from './components/reservations/reservations.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UpdateArticleComponent } from './components/update-article/update-article.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { OptionsListDashboardComponent } from './components/options-list-dashboard/options-list-dashboard.component';
+import { UpdateOptionComponent } from './components/update-option/update-option.component';
+import { UpdateUeComponent } from './components/update-ue/update-ue.component';
+import { UeListComponent } from './components/ue-list/ue-list.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +58,28 @@ import { NgxPaginationModule } from 'ngx-pagination';
     TemplateAllBackComponent,
     SideBarDashboardComponent,
     NavBarDashboardComponent,
-    FooterBackComponent,
+    EvenementComponent,
+    EvenementDetailsComponent,
+    CreateReservComponent,
+    CreateAvisComponent,
+    CreateArticleComponent,
+    MeetingRoomComponent,
+    AllArticleDashboardComponent,
+    OptionsListComponent,
+    OptionDetailsComponent,
+    ChatbotComponent,
+    CreateOptionComponent,
+    CreateUniteEnseignementComponent,
+    CreateEventComponent,
+    StatReservationComponent,
+    ReservationsComponent,
+    UserListComponent,
+    UpdateArticleComponent,
+    UpdateUserComponent,
+    OptionsListDashboardComponent,
+    UpdateOptionComponent,
+    UpdateUeComponent,
+    UeListComponent,
   ],
   imports: [
     BrowserModule,

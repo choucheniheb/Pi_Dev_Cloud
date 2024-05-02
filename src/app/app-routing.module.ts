@@ -9,24 +9,89 @@ import { CoursesComponent } from './components/courses/courses.component';
 import { CourseDetailsComponent } from './components/course-details/course-details.component';
 import { TemplateAllFrontComponent } from './components/template-all-front/template-all-front.component';
 import { TemplateAllBackComponent } from './components/template-all-back/template-all-back.component';
+import { EvenementComponent } from './components/evenement/evenement.component';
+import { EvenementDetailsComponent } from './components/evenement-details/evenement-details.component';
+import { CreateReservComponent } from './components/create-reserv/create-reserv.component';
+import { CreateAvisComponent } from './components/create-avis/create-avis.component';
+import { CreateArticleComponent } from './components/create-article/create-article.component';
+import { MeetingRoomComponent } from './components/meeting-room/meeting-room.component';
+import { AllArticleDashboardComponent } from './components/all-article-dashboard/all-article-dashboard.component';
+import { OptionsListComponent } from './components/options-list/options-list.component';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
+import { OptionDetailsComponent } from './components/option-details/option-details.component';
+import { CreateUniteEnseignementComponent } from './components/create-unite-enseignement/create-unite-enseignement.component';
+import { CreateOptionComponent } from './components/create-option/create-option.component';
+import { CreateEventComponent } from './components/create-event/create-event.component';
+import { StatReservationComponent } from './components/stat-reservation/stat-reservation.component';
+import { ReservationsComponent } from './components/reservations/reservations.component';
+import { AuthGuard } from './auth.guard';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { UpdateArticleComponent } from './components/update-article/update-article.component';
+import { UpdateUserComponent } from './components/update-user/update-user.component';
+import { OptionsListDashboardComponent } from './components/options-list-dashboard/options-list-dashboard.component';
+import { UpdateOptionComponent } from './components/update-option/update-option.component';
+import { UpdateUeComponent } from './components/update-ue/update-ue.component';
+import { UeListComponent } from './components/ue-list/ue-list.component';
 
 const routes: Routes = [
-  {path:'',component:TemplateAllFrontComponent, children:[
-    {path:'',component:HomeComponent},
-    {path:'blog',component:ArticlesComponent},
-    {path:'blog-details/:id',component:ArticleDetailsComponent},
-    {path: 'register' ,component:RegisterComponent},
-    {path: 'login' ,component:LoginComponent},
-    {path: 'courses' ,component:CoursesComponent},
-    {path: 'courses-details/:id' ,component:CourseDetailsComponent}
-  ]},
-  {path:'dashboard',component:TemplateAllBackComponent,children:[
-    
-  ]}
+  {
+    path: '',
+    component: TemplateAllFrontComponent,
+    children: [
+      {
+        path: '',
+        component: HomeComponent,
+      },
+      { path: 'blog', component: ArticlesComponent },
+      { path: 'blog-details/:id', component: ArticleDetailsComponent },
+      { path: 'register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'courses', component: CoursesComponent },
+      { path: 'courses-details/:id', component: CourseDetailsComponent },
+      { path: 'evenement', component: EvenementComponent },
+      { path: 'evenement-details/:id', component: EvenementDetailsComponent },
+      { path: 'create-reservation/:id', component: CreateReservComponent },
+      { path: 'create-avis/:id', component: CreateAvisComponent },
+      { path: 'meeting-rooom', component: MeetingRoomComponent },
+      { path: 'options', component: OptionsListComponent },
+      { path: 'chat-bot', component: ChatbotComponent },
+      { path: 'option-details/:id', component: OptionDetailsComponent },
+    ],
+  },
+  {
+    path: 'dashboard',
+    component: TemplateAllBackComponent,
+    children: [
+      { path: '', component: TemplateAllBackComponent },
+      { path: 'create-article', component: CreateArticleComponent },
+      { path: 'all-article', component: AllArticleDashboardComponent },
+      {
+        path: 'create-unite-enseignement',
+        component: CreateUniteEnseignementComponent,
+      },
+      { path: 'create-option', component: CreateOptionComponent },
+      { path: 'create-event', component: CreateEventComponent },
+      { path: 'stat-reservation', component: StatReservationComponent },
+      { path: 'all-reservation', component: ReservationsComponent },
+      { path: 'all-users', component: UserListComponent },
+      { path: 'update-blog/:id', component: UpdateArticleComponent },
+      { path: 'update-user/:id', component: UpdateUserComponent },
+      { path: 'all-Options', component: OptionsListDashboardComponent },
+      { path: 'update-option/:id', component: UpdateOptionComponent },
+      {
+        path: 'update-unite-enseignement/:id',
+        component: UpdateUeComponent,
+      },
+      {
+        path: 'all-unite-enseignement',
+        component: UeListComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

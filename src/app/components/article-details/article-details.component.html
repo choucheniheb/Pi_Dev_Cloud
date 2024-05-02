@@ -42,7 +42,11 @@
           <!-- blog details begin -->
           <div class="blog-details mt-30">
             <div class="thum">
-              <img [src]="articleData.imageUrl" alt="Blog Details" />
+              <img
+                [src]="articleData.imageUrl"
+                alt="Blog Details"
+                class="imageBlog"
+              />
             </div>
             <div class="cont">
               <h3>{{ articleData.title }}</h3>
@@ -113,7 +117,28 @@
                             <p>{{ comment.content }}</p>
                           </div>
                           <div class="comment-replay">
-                            <a (click)="scrolldown()">Reply</a>
+                            <a (click)="isReplay(comment.id)">Reply</a>
+                          </div>
+                          <div
+                            *ngIf="isReplayed && comment.id == commentId"
+                            class="form-single"
+                          >
+                            <form [formGroup]="replayForm">
+                              <div class="d-flex justify-content-center mb-4">
+                                <input
+                                  type="text"
+                                  class="form-control"
+                                  formControlName="content"
+                                  placeholder="replay"
+                                />
+                                <button
+                                  (click)="replayComment()"
+                                  class="btn btn-primary"
+                                >
+                                  Submit
+                                </button>
+                              </div>
+                            </form>
                           </div>
                         </div>
                         <ng-container
@@ -133,12 +158,12 @@
                                   <div class="comment-name">
                                     <h6>{{ reply.name }}</h6>
                                     <span>{{
-                                      comment.createdAt | date : "medium"
+                                      reply.createdAt | date : "medium"
                                     }}</span>
                                   </div>
                                 </div>
                                 <div class="comment-description-reply pt-20">
-                                  <p>{{ comment.content }}</p>
+                                  <p>{{ reply.content }}</p>
                                 </div>
                               </div>
                               <!-- comment -->
@@ -220,57 +245,24 @@
                 <div class="sidebar-post mt-30">
                   <h4>Popular Posts</h4>
                   <ul>
-                    <li>
-                      <a href="#">
-                        <div class="single-post">
-                          <div class="thum">
-                            <img
-                              src="../assets/assets-front/images/blog/blog-post/bp-1.jpg"
-                              alt="Blog"
-                            />
+                    <ng-container *ngFor="let popular of popularArticles">
+                      <li>
+                        <a routerLink="/blog-details/{{ popular.id }}">
+                          <div class="single-post">
+                            <div class="thum">
+                              <img [src]="popular.imageUrl" alt="Blog" />
+                            </div>
+                            <div class="cont">
+                              <h6>{{ popular.title }}</h6>
+                              <span>{{
+                                popular.createdAt | date : "medium"
+                              }}</span>
+                            </div>
                           </div>
-                          <div class="cont">
-                            <h6>Introduction to languages</h6>
-                            <span>20 Dec 2018</span>
-                          </div>
-                        </div>
-                        <!-- single post -->
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="single-post">
-                          <div class="thum">
-                            <img
-                              src="../assets/assets-front/images/blog/blog-post/bp-2.jpg"
-                              alt="Blog"
-                            />
-                          </div>
-                          <div class="cont">
-                            <h6>How to build a game with java</h6>
-                            <span>10 Dec 2018</span>
-                          </div>
-                        </div>
-                        <!-- single post -->
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        <div class="single-post">
-                          <div class="thum">
-                            <img
-                              src="../assets/assets-front/images/blog/blog-post/bp-1.jpg"
-                              alt="Blog"
-                            />
-                          </div>
-                          <div class="cont">
-                            <h6>Basic accounting from primary</h6>
-                            <span>07 Dec 2018</span>
-                          </div>
-                        </div>
-                        <!-- single post -->
-                      </a>
-                    </li>
+                          <!-- single post -->
+                        </a>
+                      </li>
+                    </ng-container>
                   </ul>
                 </div>
                 <!-- sidebar post -->

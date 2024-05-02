@@ -39,9 +39,9 @@
             let article of allArticles
               | paginate
                 : {
-                    itemsPerPage: 1,
+                    itemsPerPage: 2,
                     currentPage: currentPage,
-                    totalItems: totalPageNumber
+                    totalItems: totalPageNumber * 2
                   }
           "
         >
@@ -149,57 +149,24 @@
               <div class="sidebar-post mt-30">
                 <h4>Popular Posts</h4>
                 <ul>
-                  <li>
-                    <a href="#">
-                      <div class="single-post">
-                        <div class="thum">
-                          <img
-                            src="assets/assets-front/images/blog/blog-post/bp-1.jpg"
-                            alt="Blog"
-                          />
+                  <ng-container *ngFor="let popular of popularArticles">
+                    <li>
+                      <a routerLink="/blog-details/{{ popular.id }}">
+                        <div class="single-post">
+                          <div class="thum">
+                            <img [src]="popular.imageUrl" alt="Blog" />
+                          </div>
+                          <div class="cont">
+                            <h6>{{ popular.title }}</h6>
+                            <span>{{
+                              popular.createdAt | date : "medium"
+                            }}</span>
+                          </div>
                         </div>
-                        <div class="cont">
-                          <h6>Introduction to languages</h6>
-                          <span>20 Dec 2018</span>
-                        </div>
-                      </div>
-                      <!-- single post -->
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="single-post">
-                        <div class="thum">
-                          <img
-                            src="assets/assets-front/images/blog/blog-post/bp-2.jpg"
-                            alt="Blog"
-                          />
-                        </div>
-                        <div class="cont">
-                          <h6>How to build a game with java</h6>
-                          <span>10 Dec 2018</span>
-                        </div>
-                      </div>
-                      <!-- single post -->
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <div class="single-post">
-                        <div class="thum">
-                          <img
-                            src="assets/assets-front/images/blog/blog-post/bp-1.jpg"
-                            alt="Blog"
-                          />
-                        </div>
-                        <div class="cont">
-                          <h6>Basic accounting from primary</h6>
-                          <span>07 Dec 2018</span>
-                        </div>
-                      </div>
-                      <!-- single post -->
-                    </a>
-                  </li>
+                        <!-- single post -->
+                      </a>
+                    </li>
+                  </ng-container>
                 </ul>
               </div>
               <!-- sidebar post -->

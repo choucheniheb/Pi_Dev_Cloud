@@ -8,14 +8,16 @@ import { ArticleService } from 'src/app/service/article.service';
 })
 export class ArticlesComponent {
   allArticles: any;
-  currentPage:number = 1;
+  currentPage: number = 1;
   totalPageNumber = 0;
+  popularArticles: any;
 
   constructor(private articleService: ArticleService) {}
 
   ngOnInit() {
     this.getAllArticles(this.currentPage);
     console.log(this.currentPage);
+    this.getPopularArticles();
   }
 
   getAllArticles(page: number) {
@@ -28,6 +30,17 @@ export class ArticlesComponent {
       },
       (error) => {
         console.log('Error while fetching articles');
+      }
+    );
+  }
+  getPopularArticles() {
+    this.articleService.getPopularArticles().subscribe(
+      (res) => {
+        this.popularArticles = res.data;
+        console.log(res.data);
+      },
+      (error) => {
+        console.log('Article not found');
       }
     );
   }

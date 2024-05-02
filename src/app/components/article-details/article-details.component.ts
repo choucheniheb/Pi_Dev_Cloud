@@ -31,7 +31,11 @@ export class ArticleDetailsComponent {
 
   articleId = this.activatedRoute.snapshot.params['id'];
   articleData: any;
+  popularArticles: any;
   comments: any;
+  isReplayed: any;
+  commentId: any;
+  replayForm!: FormGroup;
 
   commentForm!: FormGroup;
 
@@ -83,6 +87,10 @@ export class ArticleDetailsComponent {
     this.commentForm = this.fb.group({
       content: [null, Validators.required],
     });
+    this.replayForm = this.fb.group({
+      content: [null, Validators.required],
+    });
+    this.getPopularArticles();
   }
 
   publishComment() {
@@ -124,7 +132,41 @@ export class ArticleDetailsComponent {
       }
     );
   }
-  scrolldown() {
-    window.scrollTo(0, document.body.scrollHeight);
+  isReplay(commentId: any) {
+    this.isReplayed = !this.isReplayed;
+    if (this.isReplayed) {
+      this.commentId = commentId;
+    } else {
+      this.commentId = null;
+      this.ngOnInit();
+    }
+  }
+
+  replayComment() {
+    const content = this.replayForm.get('content')?.value;
+
+    this.commentService
+      .createNewCommentReply(this.articleId, content, this.commentId)
+      .subscribe(
+        (res) => {
+          console.log('Comment Published Successfully', 'ok');
+          this.ngOnInit();
+        },
+        (error) => {
+          console.log('Something Went Wrong!!!');
+        }
+      );
+  }
+
+  getPopularArticles() {
+    this.articleService.getPopularArticles().subscribe(
+      (res) => {
+        this.popularArticles = res.data;
+        console.log(res.data);
+      },
+      (error) => {
+        console.log('Article not found');
+      }
+    );
   }
 }
