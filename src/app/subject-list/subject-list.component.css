@@ -1,0 +1,15 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;  /* Wrap items to the next line when full */
+  }
+
+  .cont {
+    max-height: 100px;  /* Adjust as needed */
+    overflow: hidden;  /* Hide content exceeding the max-height */
+  }
+  
+  
+  .single-course {
+    flex: 1 0 auto;  /* Allow items to flex and fill space */
+  }
+  

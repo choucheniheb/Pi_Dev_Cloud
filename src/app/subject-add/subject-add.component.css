@@ -1,0 +1,38 @@
+.add-subject-form {
+    background-color: yellow;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .subject-form {
+    margin-top: 20px;
+  }
+  
+  .subject-form .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .subject-form label {
+    color: blue;
+    font-weight: bold;
+  }
+  
+  .subject-form input[type="text"] {
+    padding: 5px;
+    border: 1px solid blue;
+    border-radius: 3px;
+  }
+  
+  .subject-form button {
+    background-color: blue;
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .subject-form button:hover {
+    background-color: darkblue;
+  }

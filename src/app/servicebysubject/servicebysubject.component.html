@@ -1,0 +1,28 @@
+<div>
+  <h2>Services by Subject</h2>
+  <ul>
+    <li *ngFor="let service of services">
+      {{ service.serviceid}}
+      {{ service.service_name }}
+      <button class="btn btn-danger" (click)="deleteService(service.serviceid)">Delete</button>
+      <button class="btn btn-primary" (click)="goToUpdateService(service.serviceid)">Update</button>
+      
+    </li>
+    
+  </ul>
+
+  <h3>Add New Service</h3>
+  <form [formGroup]="addServiceForm" (ngSubmit)="addService()">
+    <div class="form-group">
+      <label for="serviceName">Service Name:</label>
+      <input type="text" class="form-control" id="serviceName" formControlName="serviceName">
+    </div>
+    <div class="form-group">
+      <label for="serviceDescription">Service Description:</label>
+      <textarea class="form-control" id="serviceDescription" formControlName="serviceDescription"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Service</button>
+  </form>
+
+  <button class="btn btn-primary" (click)="goBack()">Go Back</button>
+</div>

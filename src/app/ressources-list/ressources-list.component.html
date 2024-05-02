@@ -1,0 +1,14 @@
+<h1>Ressources List</h1>
+
+<div *ngIf="ressourcesList.length > 0">
+  <ul>
+    <li *ngFor="let ressource of ressourcesList">
+      <h3>{{ ressource.ressourceName }}</h3>
+      <p>Type: {{ ressource.ressource_type }}</p>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="ressourcesList.length === 0">
+  <p>No ressources available.</p>
+</div>
