@@ -1,0 +1,152 @@
+
+<main id="main" class="main">
+    <section class="section">
+      <div class="container">
+  
+        <div class="card">
+          <div class="card-body">
+            
+           <!-- Champ de recherche -->
+        
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="card-header">
+                <h4 class="card-title text-center custom-title">Liste des Événement</h4>
+              </div>
+              </div>
+
+              <!-- <div class="shopping-cart  mb-2 me-3">
+                <a class="btn btn-primary text-white" data-toggle="modal" data-target="#EditAddevent"
+                    (click)="openModel()"><i class="fa fa-shopping-basket me-2"></i>Create New event</a>
+            </div> -->
+              
+
+              <button class="btn btn-primary" [routerLink]="'/createEvent'">Ajouter Événement</button>
+
+              
+
+  <br/>
+  <br/>
+                      <!-- Boutons de tri -->
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="search-container">
+                          <input type="text" (input)="searchSynonyms()" [(ngModel)]="searchTerm" class="form-control" placeholder="Rechercher..." >
+                         <!--<button class="btn btn-outline-secondary" >Rechercher</button>-->
+                        </div>
+                        <br/>
+
+                        
+   <!-- debut   modalll-->
+  
+
+
+
+<!--<div class="modal fade" id="EditAddevent" tabindex="-1" event="dialog" aria-labelledby="exampleModalCenterTitle"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" event="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Event</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+
+              <app-create-event></app-create-event>
+
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary" *ngIf="creatingMode"
+                >Create Event</button>
+              <button type="button" class="btn btn-primary" *ngIf="!creatingMode"
+                >Modify Event</button>
+          </div>
+      </div>
+  </div>
+</div>-->
+
+
+
+                        <!-- finn  modalll-->
+                      </div>
+          
+  
+            <!-- Tableau avec les données des universités -->
+            <table class="table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th>Id </th>
+                  <th>Nom </th>
+                  <th>type </th>
+                  <th>nbr Places </th>
+                  <th>Lieu </th>
+                  <th>Date debut  </th>
+                  <th>Date fin</th>
+                  <th>Image</th>
+
+                  
+                  <th></th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let event of events">
+                  <td>{{ event?.id }}</td>
+                  <td>{{ event?.nom }}</td>
+                  <td>{{ event?.type }}</td>
+                  <td>{{ event?.nbrPlace }}</td>
+                  <td>{{ event?.lieu }}</td>
+                  <td>{{ event?.date_deb }}</td>
+                  <td>{{ event?.date_fin }}</td>
+                  <td>
+                    <img [src]="sanitizeImageUrl(event?.imagecloud?.imageUrl)"  width="150" height="150" auto/>
+                 </td>
+                  
+                  
+                  <td>
+                    <a [routerLink]="['/modifEvent/', event.id]" class="btn btn-success me-2">Modifier</a>
+                    <button type="submit" class="btn btn-danger" (click)="onDeleteBloc(event)">Supprimer</button>
+                  </td>
+                  
+                </tr>
+                
+              </tbody>
+            </table>
+              <!-- Bouton pour exporter en PDF -->
+          <!--div class="text-center mt-4">
+            <button class="btn btn-primary" (click)="ExportPdf()">Exporter en PDF</button>
+          </div-->
+
+  
+            
+  
+          
+  
+          </div>
+        </div>
+  
+
+        
+        
+      </div>
+    </section>
+  </main>
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  

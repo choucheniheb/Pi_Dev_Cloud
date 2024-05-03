@@ -1,0 +1,40 @@
+<script src="https://kit.fontawesome.com/941eee4760.js" crossorigin="anonymous"></script>
+
+<main id="main" class="main">
+    <div class="row">
+        <div class="card col-md-6 offset-md-3 offset-md-3">
+            <div class="row">
+                <h3 class="text-center"> Update Evenement </h3>
+                <hr />
+                <div class="card-body">
+                    <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+
+                        <div class="form-group">
+                            <label> Nom de reservation</label>
+                            <input type="text" class="form-control" formControlName="nom_reserv">
+                            <div *ngIf="reservationForm.get('nom_reserv')?.hasError('required') && reservationForm.get('nom_reserv')?.touched" class="text-danger">
+                                Le champ Nom est requis.
+                            </div>
+                            <div *ngIf="reservationForm.get('nom_reserv')?.hasError('minlength') && reservationForm.get('nom_reserv')?.touched" class="text-danger">
+                                Le champ Nom doit avoir au moins 2 caractères.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label> Nombre du place</label>
+                            <input type="datetime" class="form-control" formControlName="date_reser">
+                            <div *ngIf="reservationForm.get('date_reser')?.hasError('required') && reservationForm.get('date_reser')?.touched" class="text-danger">
+                                Le champ date de reservation est requis.
+                            </div>
+                        </div>
+                        <br />
+                        <button class="btn btn-success" type="submit" >Submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<app-footer></app-footer>

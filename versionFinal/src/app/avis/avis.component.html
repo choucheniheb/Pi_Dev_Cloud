@@ -1,0 +1,70 @@
+
+<main id="main" class="main">
+    <section class="section">
+      <div class="container">
+  
+        <div class="card">
+          <div class="card-body">
+            
+            <div class="d-flex justify-content-between align-items-center">
+              <h4 class="card-title text-center custom-title">Liste des Avis</h4>
+              </div>
+              <br/>
+                  <!-- Boutons recherche 
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <div class="search-container">
+                      <input type="text" (input)="searchSynonyms()" [(ngModel)]="searchTerm" class="form-control" placeholder="Rechercher..." >
+                      <button class="btn btn-outline-secondary" >Rechercher</button>
+                    </div>
+                    <br/>
+                    
+                  </div>-->
+  
+            <!-- Tableau avec les données des réservations -->
+            <table class="table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th>Nom de l'Evenement</th>  
+                  <th>Commentaire</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let avis of avis">
+                  <td>{{ avis?.event?.nom }}</td>
+                  <td>{{ avis?.contenu }}</td>
+                 
+                  
+                
+                  <td>  
+                    <td>  
+                      
+               
+                        <button type="submit" class="btn btn-danger" (click)="onDeleteBloc(avis)">Supprimer</button>
+                   </td>
+                      
+               
+             
+                </tr>
+              </tbody>
+            </table>
+              <!-- Bouton pour exporter en PDF -->
+          <!--div class="text-center mt-4">
+            <button class="btn btn-primary" (click)="ExportPdf()">Exporter en PDF</button>
+          </div>
+          <div>
+            <button (click)="goTostatEnseignat()">Afficher les statistiques</button>
+            <canvas id="myChart" width="400" height="400"></canvas>
+          </div-->
+          <!-- <span (click)="goTostatEnseignat()" style="cursor: pointer;">
+            <i class="fas fa-chart-bar"></i> StatEnseignat
+          </span> -->
+         
+          </div>
+        </div>
+  
+      </div>
+    </section>
+  </main>
+  
+  

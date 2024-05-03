@@ -1,0 +1,82 @@
+<script src="https://kit.fontawesome.com/941eee4760.js" crossorigin="anonymous"></script>
+<div class="content">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title text-center">Modifier Evenement</h4>
+                <hr />
+                <div class="card-body">
+                    <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+
+                        <div class="form-group">
+                            <label> Nom</label>
+                            <input type="text" class="form-control" formControlName="nom">
+                            <div *ngIf="eventForm.get('nom')?.hasError('required') && eventForm.get('nom')?.touched" class="text-danger">
+                                Le champ Nom est requis.
+                            </div>
+                            <div *ngIf="eventForm.get('nom')?.hasError('minlength') && eventForm.get('nom')?.touched" class="text-danger">
+                                Le champ Nom doit avoir au moins 2 caractères.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label> Type</label>
+                            <input type="text" class="form-control" formControlName="type">
+                            <div *ngIf="eventForm.get('type')?.hasError('required') && eventForm.get('type')?.touched" class="text-danger">
+                                Le champ Type est requis.
+                            </div>
+                            <div *ngIf="eventForm.get('type')?.hasError('minlength') && eventForm.get('type')?.touched" class="text-danger">
+                                Le champ Type doit avoir au moins 2 caractères.
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label> Lieu</label>
+                            <input type="text" class="form-control" formControlName="lieu">
+                            <div *ngIf="eventForm.get('lieu')?.hasError('required') && eventForm.get('lieu')?.touched" class="text-danger">
+                                Le champ lieu est requis.
+                            </div>
+                            <div *ngIf="eventForm.get('lieu')?.hasError('minlength') && eventForm.get('lieu')?.touched" class="text-danger">
+                                Le champ lieu doit avoir au moins 2 caractères.
+                            </div>
+                        </div>
+
+
+                     
+                        <div class="form-group">
+                            <label> Nombre du place</label>
+                            <input type="text" class="form-control" formControlName="nbrPlace">
+                            <div *ngIf="eventForm.get('nbrPlace')?.hasError('required') && eventForm.get('nbrPlace')?.touched" class="text-danger">
+                                Le champ nbrPlace est requis.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label> Date de debut</label>
+                            <input type="date" class="form-control" formControlName="date_deb">
+                            <div *ngIf="eventForm.get('date_deb')?.hasError('required') && eventForm.get('date_deb')?.touched" class="text-danger">
+                                Le champ Date  est requis.
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label> Date de fin</label>
+                            <input type="date" class="form-control" formControlName="date_fin">
+                            <div *ngIf="eventForm.get('date_fin')?.hasError('required') && eventForm.get('date_fin')?.touched" class="text-danger">
+                                Le champ Date  est requis.
+                            </div>
+                        </div>
+                        <label for="file-upload" class="custom-file-upload">
+                            Télécharger un fichier
+                          </label>
+                          <input id="file-upload" type="file" class="add-button" (change)="onFileChangeClou($event)" />
+                        <!--input type="file" class="add-button" (change)="onFileChangeClou($event)" /-->
+                        <br />
+                        <button class="btn btn-success" type="submit" >Submit</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

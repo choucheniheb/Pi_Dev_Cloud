@@ -1,0 +1,201 @@
+
+<div class="content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title text-center">Ajouter Evenement</h4>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="eventForm" (ngSubmit)="onSubmit()" novalidate #form="ngForm" enctype="multipart/form-data">
+              <!-- Your form fields go here -->
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" class="form-control" id="nom" formControlName="nom">
+            <div *ngIf="eventForm.get('nom')?.hasError('required') && eventForm.get('nom')?.touched" class="text-danger">
+              Nom est requis.
+            </div>
+            <div *ngIf="eventForm.get('nom')?.hasError('minlength')" class="text-danger">
+              Le nom doit contenir au moins 4 lettres.
+            </div>
+            <div *ngIf="eventForm.get('nom')?.hasError('containsNumber')" class="text-danger">
+              Le nom ne doit pas contenir de chiffres.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lieu">Type</label>
+            <input type="text" class="form-control" id="type" formControlName="type">
+            <div *ngIf="eventForm.get('type')?.hasError('required') && eventForm.get('type')?.touched" class="text-danger">
+              type est requis.
+            </div>
+            <div *ngIf="eventForm.get('type')?.hasError('minlength')" class="text-danger">
+              type doit contenir au moins 4 lettres.
+            </div>
+            <div *ngIf="eventForm.get('type')?.hasError('containsNumber')" class="text-danger">
+              type ne doit pas contenir de chiffres.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="lieu">Lieu</label>
+            <input type="text" class="form-control" id="lieu" formControlName="lieu">
+            <div *ngIf="eventForm.get('lieu')?.hasError('required') && eventForm.get('lieu')?.touched" class="text-danger">
+              lieu est requis.
+            </div>
+            <div *ngIf="eventForm.get('lieu')?.hasError('minlength')" class="text-danger">
+              Lieu doit contenir au moins 4 lettres.
+            </div>
+            <div *ngIf="eventForm.get('lieu')?.hasError('containsNumber')" class="text-danger">
+              Lieu ne doit pas contenir de chiffres.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="nbrPlace">Nombre du place</label>
+            <input type="text" class="form-control" id="nbrPlace" formControlName="nbrPlace">
+            <div *ngIf="eventForm.get('nbrPlace')?.hasError('required') && eventForm.get('nbrPlace')?.touched" class="text-danger">
+              Nombre du place est requis.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="date_deb">date debut</label>
+            <input type="date" class="form-control" id="date_deb" formControlName="date_deb">
+            <div *ngIf="eventForm.get('date_deb')?.hasError('required') && eventForm.get('date_deb')?.touched" class="text-danger">
+              date est requis.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="date_fin">date fin</label>
+            <input type="date" class="form-control" id="date_fin" formControlName="date_fin">
+            <div *ngIf="eventForm.get('date_fin')?.hasError('required') && eventForm.get('date_fin')?.touched" class="text-danger">
+              date est requis.
+            </div>
+          </div>
+          <!--input type="file" class="add-button" (change)="onFileChange($event)" /-->
+          <!--input type="file" class="add-button" (change)="onFileChange($event)" /-->
+<!--button (click)="onFileChangeClou($event)" type="submit" class="btn btn-outline-dark">file</button-->
+
+          <!--input type="file" class="add-button" (change)="onFileChangeClou($event)" -->
+          <!--input id="file-upload" type="file" class="add-button" (change)="onFileChangeClou($event)" /-->
+         
+          <label for="file-upload" class="custom-file-upload">
+            Télécharger un fichier
+          </label>
+          <input id="file-upload" type="file" class="add-button" (change)="onFileChangeClou($event)" />
+        <!--input type="file" class="add-button" (change)="onFileChangeClou($event)" /-->
+         
+          <button type="submit"  class="btn btn-success">Ajouter</button>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+<!--
+
+
+<div class="modal fade" id="EditAddevent" tabindex="-1" event="dialog" aria-labelledby="exampleModalCenterTitle"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-xl" event="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Event</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Event Name</span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="newEvent.nameEvent">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Event Description</span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="newEvent.description">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Start</span>
+                </div>
+                <input type="date" class="form-control" [(ngModel)]="newEvent.dateStart" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Finish</span>
+                </div>
+                <input type="date" class="form-control" [(ngModel)]="newEvent.dateFinish" [ngModelOptions]="{standalone: true}">
+            </div>
+
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">nombre des tickets</span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="newEvent.nbt">
+            </div>
+            <div class="input-group mb-3">
+                <label class="input-group-text mb-0">type de ticket</label>
+                <select class="default-select form-control wide" [(ngModel)]="newEvent.typeticket"
+                    (ngModelChange)="handleTicketTypeChange()">
+
+                    <option selected>Choose...</option>
+                    <option value="payante">Payante</option>
+                    <option value="nonPayante">Non payante</option>
+                </select>
+            </div>
+            <div class="input-group mb-3" *ngIf="newEvent.typeticket === 'payante'">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">price</span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="newEvent.price">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">place</span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="newEvent.place">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-default">Image</span>
+                </div>
+                <div class="form-file">
+                    <input type="file" class="form-control" (change)="onFileSelected($event)">
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" *ngIf="creatingMode"
+                (click)="createEvent()">Create Event</button>
+            <button type="button" class="btn btn-primary" *ngIf="!creatingMode"
+                (click)="modifyEvent()">Modify Event</button>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+-->
+

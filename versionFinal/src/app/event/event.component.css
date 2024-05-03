@@ -1,0 +1,23 @@
+.search-container {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .search-container .form-control {
+    flex-grow: 1; /* Le champ de recherche utilise l'espace disponible */
+  }
+  
+  .search-container button {
+    white-space: nowrap; /* Empêche le texte du bouton de passer à la ligne */
+  }
+  .img{
+    width: 100px;
+    height: 100px;
+  }
+  .custom-title {
+    font-size: 24px; /* Taille de la police */
+    font-weight: bold; /* Gras */
+    color: #333; /* Couleur du texte */
+    /* Autres styles personnalisés */
+  }
+  

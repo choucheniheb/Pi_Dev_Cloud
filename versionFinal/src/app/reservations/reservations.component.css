@@ -1,0 +1,34 @@
+.search-container {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .search-container .form-control {
+    flex-grow: 1; /* Le champ de recherche utilise l'espace disponible */
+  }
+  
+  .search-container button {
+    white-space: nowrap; /* Empêche le texte du bouton de passer à la ligne */
+  }
+  .custom-button {
+    background-color: white;
+    border: 1px solid black;
+    color: black; /* Add this line to set the color of the text */
+  }
+  
+  .button-text {
+    margin-left: 5px; /* Add this line to provide some spacing between the icon and text */
+  }
+
+  .btn-sm {
+    font-size: 0.875rem;
+    padding: 0.25rem 0.5rem;
+  }
+  .custom-title {
+    font-size: 24px; /* Taille de la police */
+    font-weight: bold; /* Gras */
+    color: #333; /* Couleur du texte */
+    /* Autres styles personnalisés */
+  }
+  
+  

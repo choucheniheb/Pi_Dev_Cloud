@@ -1,0 +1,71 @@
+
+
+<main id="main" class="main">
+    <section class="section">
+      <div class="container">
+  
+        <div class="card">
+          <div class="card-body">
+            
+            <div class="d-flex justify-content-between align-items-center">
+                <h4 class="card-title text-center custom-title">Liste des Ticket</h4>
+              </div>
+  
+            <!-- Champ de recherche -->
+            <!-- Boutons recherche -->
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <div class="search-container">
+                <input type="text" (input)="searchSynonyms()" [(ngModel)]="searchTerm" class="form-control" placeholder="Rechercher..." >
+                <button class="btn btn-outline-secondary" >Rechercher</button>
+              </div>
+              <br/>
+              
+            </div>
+            
+  
+                      <!-- Boutons de tri -->
+           
+  
+            <!-- Tableau avec les données des universités -->
+            <table class="table table-striped mt-4">
+              <thead>
+                <tr>
+             
+                 
+                  <th>Nombre du ticket </th>
+                  <th>Type </th>
+                  <th>numero  </th>
+                  <th>Prix  </th>
+                  <th>Nom d'evenement Affecte</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ticket of tickets">
+                 
+                  <td>{{ ticket?.nbr_ticket }}</td>
+                  <td>{{ ticket?.type }}</td>
+                  <td>{{ ticket?.numero }}</td>
+                  <td>{{ ticket?.prix }}</td>
+                  <td>{{ ticket?.event?.nom }}</td>
+
+                  <td>
+                   
+                    <button type="submit" class="btn btn-danger" (click)="onDeleteBloc(ticket)">Supprimer</button>
+                  </td>
+                  
+                </tr>
+                
+              </tbody>
+            </table>
+  
+            
+  
+          
+  
+          </div>
+        </div>
+  
+      </div>
+    </section>
+  </main>
