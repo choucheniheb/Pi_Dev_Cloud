@@ -1,0 +1,57 @@
+
+
+<div class="blog-container">
+ 
+ 
+
+
+  <div class="blog-post" *ngFor="let event of events">
+    <div class="blog-post-header">
+      <img [src]="sanitizeImageUrl(event?.imagecloud?.imageUrl)" style="width: 350px; height: 400px;" />
+    </div>
+    <div class="blog-post-content">
+      <div class="blog-post-meta">
+        Nom de l'evenement: <h2>{{ event.nom }}</h2>
+      </div>
+      <div class="blog-post-meta">
+        Type: <div class="time">{{ event.type }}</div>
+      </div>
+      <div class="blog-post-meta">
+        Date Debut: <div class="time">{{ event.date_deb | date:'yyyy-MM-dd' }}</div>
+      </div>
+      <div class="blog-post-meta"> Date fin: <div class="time">{{ event.date_fin | date:'yyyy-MM-dd' }}</div>
+      </div>
+      
+      <div class="blog-post-meta">
+        Lieu: <div class="time">{{ event.lieu }}</div>
+      </div>
+      <div class="blog-post-meta">
+        nombre du place: <div class="time">{{ event.nbrPlace }}</div>
+      </div>
+      <div class="blog-post-footer">
+        <ng-container *ngIf="event.nbrPlace > 0; else placesCompletes">
+          <a class="btn btn-success more" [routerLink]="['/reserv',event.id]">
+            <div>Réserver</div>
+            <div><i class="ion-ios-arrow-thin-right"></i></div>
+          </a>
+        </ng-container>
+        <ng-template #placesCompletes>
+          <div class="places-completes-message" style="color: red;">no place disponible.</div>
+        </ng-template>
+      
+        <a class="btn btn-success more" [routerLink]="['/avis',event.id]">
+          <div>Avis</div>
+          <div><i class="ion-ios-arrow-thin-right"></i></div>
+        </a>
+        
+      </div>
+
+    </div>
+    
+
+  </div>
+  <button class="btn btn-primary" (click)="getEventsByUserType()">mes preferences</button>
+
+
+  
+  </div>
