@@ -1,0 +1,67 @@
+<p>create-module works!</p>
+
+<div class="content">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title text-center">Ajouter Option</h4>
+            </div>
+            <div class="card-body" style="margin-left: 300px;">
+              <form [formGroup]="moduleForm"  novalidate #form="ngForm" enctype="multipart/form-data">
+                <!-- Your form fields go here -->
+            <div class="form-group">
+              <label for="titre">Nom</label>
+              <input type="text" class="form-control" id="titre" formControlName="nom">
+              <div *ngIf="moduleForm.get('nom')?.hasError('required') && moduleForm.get('nom')?.touched" class="text-danger">
+                titre est requis.
+              </div>
+              <div *ngIf="moduleForm.get('nom')?.hasError('minlength')" class="text-danger">
+                Le titre doit contenir au moins 4 lettres.
+              </div>
+              
+            </div>
+  
+            <div class="form-group">
+              <label for="type">Coefficient</label>
+              <input type="text" class="form-control" id="type" formControlName="coefficient">
+              <div *ngIf="moduleForm.get('coefficient')?.hasError('required') && moduleForm.get('coefficient')?.touched" class="text-danger">
+                type est requis.
+              </div>
+              <div *ngIf="moduleForm.get('description')?.hasError('minlength')" class="text-danger">
+                type doit contenir au moins 4 lettres.
+              </div>
+
+              <label for="matier">Matier:</label>
+              <select id="matier" formControlName="matier">
+                <option *ngFor="let matier of matiers" [value]="matier">{{ matier }}</option>
+              </select>
+              
+            </div>
+  
+            
+            <!--input type="file" class="add-button" (change)="onFileChange($event)" /-->
+            <!--input type="file" class="add-button" (change)="onFileChange($event)" /-->
+  <!--button (click)="onFileChangeClou($event)" type="submit" class="btn btn-outline-dark">file</button-->
+  
+            <!--input type="file" class="add-button" (change)="onFileChangeClou($event)" -->
+            <!--input id="file-upload" type="file" class="add-button" (change)="onFileChangeClou($event)" /-->
+           
+            <label for="file-upload" class="custom-file-upload">
+              Télécharger un fichier
+            </label>
+            <input id="file-upload" type="file" class="add-button"  />
+          <!--input type="file" class="add-button" (change)="onFileChangeClou($event)" /-->
+           
+            <button type="submit" (click)="postevent()" class="btn btn-success">Ajouter</button>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <app-template-all-back></app-template-all-back>
+  <app-side-bar-dashboard></app-side-bar-dashboard>
+  
+  

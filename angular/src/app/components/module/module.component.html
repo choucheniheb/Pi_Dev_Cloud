@@ -1,0 +1,91 @@
+
+<main id="main" class="main">
+    <section class="section">
+      <div class="container">
+  
+        <div class="card">
+          <div class="card-body" style="margin-left: 250px;">
+            
+           <!-- Champ de recherche -->
+        
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="card-header">
+                <h4 class="card-title text-center custom-title">Liste des Modules</h4>
+              </div>
+              </div>
+              
+  
+              <button class="btn btn-primary" [routerLink]="'/createmodule'">Ajouter Module</button>
+
+  <br/>
+  <br/>
+                      <!-- Boutons de tri -->
+                      <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div class="search-container">
+                       <!--   <input type="text" (input)="searchSynonyms()" [(ngModel)]="searchTerm" class="form-control" placeholder="Rechercher..." >-->
+                          <button class="btn btn-outline-secondary" >Rechercher</button>
+                        </div>
+                        <br/>
+                        
+                      </div>
+          
+  
+            <!-- Tableau avec les données des universités -->
+            <table class="table table-striped mt-4">
+              <thead>
+                <tr>
+                  <th>Id </th>
+                  <th>Nom </th>
+                  <th>Coefficient </th>
+                  <th>Matieres</th> 
+                  <th></th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let module of modules">
+                  <td>{{ module?.id }}</td>
+                  <td>{{ module?.nom }}</td>
+                  <td>{{ module?.coefficient }}</td>
+                  <td>{{ module?.matier }}</td>
+                  <td>
+                  <object [data]="module?.pdfFileUrl" type="application/pdf" width="200" height="200">
+                    <p>PDF could not be displayed.</p>
+                  </object>
+                </td>
+            
+                 
+                  
+                  <td>
+                     <!--<img [src]="sanitizeImageUrl(event?.imagecloud?.imageUrl)"  width="150" height="150" auto/> -->
+                 </td>
+                  
+                  
+                 <td>
+                    <a routerLink="/updateoption/{{module.id}}" class="btn btn-success me-2">Modifier</a>
+                    <button type="submit" class="btn btn-danger" (click)="removeSpecialite(module.id)">Supprimer</button>
+                  </td> 
+              
+                  
+                </tr>
+                
+              </tbody>
+            </table>
+              <!-- Bouton pour exporter en PDF -->
+          <!--div class="text-center mt-4">
+            <button class="btn btn-primary" (click)="ExportPdf()">Exporter en PDF</button>
+          </div-->
+
+  
+            
+  
+          
+  
+          </div>
+        </div>
+  
+      </div>
+    </section>
+  </main>
+  <app-template-all-back></app-template-all-back>
+  <app-side-bar-dashboard></app-side-bar-dashboard>

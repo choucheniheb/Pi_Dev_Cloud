@@ -1,0 +1,61 @@
+
+<div class="content">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title text-center">Ajouter Option</h4>
+            </div>
+            <div class="card-body" style="margin-left: 300px;">
+              <form [formGroup]="optionForm"  novalidate #form="ngForm" enctype="multipart/form-data">
+                <!-- Your form fields go here -->
+            <div class="form-group">
+              <label for="titre">Nom</label>
+              <input type="text" class="form-control" id="titre" formControlName="nom">
+              <div *ngIf="optionForm.get('nom')?.hasError('required') && optionForm.get('nom')?.touched" class="text-danger">
+                titre est requis.
+              </div>
+              <div *ngIf="optionForm.get('nom')?.hasError('minlength')" class="text-danger">
+                Le titre doit contenir au moins 4 lettres.
+              </div>
+              <div *ngIf="optionForm.get('nom')?.hasError('containsNumber')" class="text-danger">
+                Le titre ne doit pas contenir de chiffres.
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="type">Description</label>
+              <input type="text" class="form-control" id="type" formControlName="description">
+              <div *ngIf="optionForm.get('description')?.hasError('required') && optionForm.get('type')?.touched" class="text-danger">
+                type est requis.
+              </div>
+              <div *ngIf="optionForm.get('description')?.hasError('minlength')" class="text-danger">
+                type doit contenir au moins 4 lettres.
+              </div>
+              
+            </div>
+
+            <label for="categorieSpecialite">Categorie:</label>
+  <select id="categorieSpecialite" formControlName="categorieSpecialite">
+    <option *ngFor="let categorieSpecialite of Categories" [value]="categorieSpecialite">{{ categorieSpecialite }}</option>
+  </select>
+  
+            
+    
+           
+  <input type="file" name="file" (change)="onFileSelected($event)" />
+
+  
+           
+            <button type="submit" (click)="postevent()" class="btn btn-success">Ajouter</button>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <app-template-all-back></app-template-all-back>
+  <app-side-bar-dashboard></app-side-bar-dashboard>
+  
+  

@@ -1,0 +1,65 @@
+
+<div class="content" style="margin-left: 250px;">
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title text-center">modifier un Evenement</h4>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="updateoptionForm"  novalidate #form="ngForm" enctype="multipart/form-data">
+                <!-- Your form fields go here -->
+            <div class="form-group">
+              <label for="nom">nom</label>
+              <input type="text" class="form-control" id="nom" formControlName="nom">
+              <div *ngIf="updateoptionForm.get('nom')?.hasError('required') && updateoptionForm.get('nom')?.touched" class="text-danger">
+                nom est requis.
+              </div>
+              <div *ngIf="updateoptionForm.get('nom')?.hasError('minlength')" class="text-danger">
+                Le nom doit contenir au moins 4 lettres.
+              </div>
+              <div *ngIf="updateoptionForm.get('nom')?.hasError('containsNumber')" class="text-danger">
+                Le nom ne doit pas contenir de chiffres.
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="description">description</label>
+              <input type="text" class="form-control" id="description" formControlName="description">
+              <div *ngIf="updateoptionForm.get('description')?.hasError('required') && updateoptionForm.get('description')?.touched" class="text-danger">
+                type est requis.
+              </div>
+              <div *ngIf="updateoptionForm.get('description')?.hasError('minlength')" class="text-danger">
+                type doit contenir au moins 4 lettres.
+              </div>
+             
+            </div>
+  
+            
+  
+           
+            <!--input type="file" class="add-button" (change)="onFileChange($option)" /-->
+            <!--input type="file" class="add-button" (change)="onFileChange($option)" /-->
+  <!--button (click)="onFileChangeClou($option)" type="submit" class="btn btn-outline-dark">file</button-->
+  
+            <!--input type="file" class="add-button" (change)="onFileChangeClou($option)" -->
+            <!--input id="file-upload" type="file" class="add-button" (change)="onFileChangeClou($option)" /-->
+           
+            <label for="file-upload" class="custom-file-upload">
+              Télécharger un fichier
+            </label>
+            <input id="file-upload" type="file" class="add-button"  />
+          <!--input type="file" class="add-button" (change)="onFileChangeClou($option)" /-->
+           
+            <button type="submit" (click)="modifySpecialite()" class="btn btn-success">modifier</button>
+          </form>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <app-template-all-back></app-template-all-back>
+  <app-side-bar-dashboard></app-side-bar-dashboard>
+  
+  
