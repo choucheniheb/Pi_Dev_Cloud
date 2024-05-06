@@ -17,6 +17,7 @@ export class CreateReservComponent {
   nomReservation: string = '';
   reservation: Reservation[]=[];
 
+  reservationnn: Reservation[]=[];
   constructor(
     private reservationService: ReservationService,
     private router: Router,
