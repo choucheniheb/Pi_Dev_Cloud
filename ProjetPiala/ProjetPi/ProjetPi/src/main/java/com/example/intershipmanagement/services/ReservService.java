@@ -48,6 +48,8 @@ public class ReservService implements IReservService{
    public static final String AUTH_TOKEN ="89e21e616c46431f87bfffb68821c038";
 
 
+   public static final String test =null;
+
     ReservRepository reservRepository;
     IEventRepository eventRepository;
     @Override
