@@ -56,7 +56,13 @@
             </div>
             <div class="event-cont">
               <a routerLink="/option-details/{{ option.id }}"
-                ><h4>{{ option.nom }}</h4></a
+                ><h4>
+                  {{
+                    option.nom.length > 24
+                      ? option.nom.substr(0, 24) + "..."
+                      : option.nom
+                  }}
+                </h4></a
               >
               <span
                 ><i class="fa fa-map-marker"></i>

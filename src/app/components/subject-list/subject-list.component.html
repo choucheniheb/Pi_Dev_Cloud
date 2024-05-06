@@ -7,10 +7,7 @@
       <thead>
         <tr>
           <th scope="col" class="border-0 rounded-start">#</th>
-          <th scope="col" class="border-0">Option Name</th>
-          <th scope="col" class="border-0">Description</th>
-          <th scope="col" class="border-0">Categorie Option</th>
-          <th scope="col" class="border-0">Unite Enseignement</th>
+          <th scope="col" class="border-0">Subject Name</th>
           <th scope="col" class="border-0 rounded-end">Action</th>
         </tr>
       </thead>
@@ -18,43 +15,15 @@
       <!-- Table body START -->
       <tbody>
         <!-- Table row -->
-        <ng-container *ngFor="let option of allOptions">
+        <ng-container *ngFor="let subject of allSubject">
           <tr>
             <!-- Table data -->
-            <td>{{ option.id }}</td>
+            <td>{{ subject.subjectId }}</td>
 
             <!-- Table data -->
             <td>
               <h6 class="table-responsive-title mb-0">
-                <a href="#">{{ option.nom }}</a>
-              </h6>
-            </td>
-
-            <!-- Table data -->
-            <td>
-              <h6 class="table-responsive-title mb-0">
-                <a href="#">{{
-                  option.description.length > 50
-                    ? option.description.substr(0, 50) + "..."
-                    : option.description
-                }}</a>
-              </h6>
-            </td>
-
-            <!-- Table data -->
-            <td>
-              <h6 class="table-responsive-title mb-0">
-                <a href="#">{{ option.categorieSpecialite }}</a>
-              </h6>
-            </td>
-
-            <!-- Table data -->
-            <td>
-              <h6
-                class="table-responsive-title mb-0"
-                *ngFor="let co of option.coefOptions"
-              >
-                <a href="#">{{ co.uniteEnseignement.nom }},</a>
+                <a href="#">{{ subject.subjectName }}</a>
               </h6>
             </td>
 
@@ -66,7 +35,7 @@
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
                 data-bs-original-title="Edit"
-                routerLink="/dashboard/update-option/{{ option.id }}"
+                routerLink="/dashboard/update-subject/{{ subject.subjectId }}"
               >
                 <i class="bi bi-pencil-square"></i>
               </button>
@@ -74,9 +43,8 @@
                 class="btn btn-danger-soft btn-round me-1 mb-1 mb-md-0"
                 data-bs-toggle="tooltip"
                 data-bs-placement="top"
-                title=""
                 data-bs-original-title="Delete"
-                (click)="deleteOption(option.id)"
+                (click)="deleteSubject(subject.subjectId)"
               >
                 <i class="bi bi-trash"></i>
               </button>

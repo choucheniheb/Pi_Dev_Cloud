@@ -124,77 +124,47 @@
           </ul>
         </li>
 
-        <!-- Menu item 5 -->
-        <li class="nav-item">
-          <a class="nav-link" href="admin-review.html"
-            ><i class="far fa-comment-dots fa-fw me-2"></i>Reviews</a
-          >
-        </li>
-
-        <!-- Menu item 6 -->
-        <li class="nav-item">
-          <a class="nav-link" href="admin-earning.html"
-            ><i class="far fa-chart-bar fa-fw me-2"></i>Earnings</a
-          >
-        </li>
-
-        <!-- Menu item 7 -->
-        <li class="nav-item">
-          <a class="nav-link" href="admin-setting.html"
-            ><i class="fas fa-user-cog fa-fw me-2"></i>Admin Settings</a
-          >
-        </li>
-
-        <!-- Menu item 8 -->
+        <!-- Menu item Subject -->
         <li class="nav-item">
           <a
             class="nav-link"
             data-bs-toggle="collapse"
-            href="#collapseauthentication"
+            href="#collapsesubject"
             role="button"
             aria-expanded="false"
-            aria-controls="collapseauthentication"
+            aria-controls="collapseoption"
           >
-            <i class="bi bi-lock fa-fw me-2"></i>Authentication
+            <i class="fas fa-user-tie fa-fw me-2"></i>Subject
           </a>
           <!-- Submenu -->
           <ul
             class="nav collapse flex-column"
-            id="collapseauthentication"
+            id="collapsesubject"
             data-bs-parent="#navbar-sidebar"
           >
             <li class="nav-item">
-              <a class="nav-link" href="sign-up.html">Sign Up</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="sign-in.html">Sign In</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="forgot-password.html"
-                >Forgot Password</a
+              <a class="nav-link" routerLink="/dashboard/create-subject"
+                ><i class="fas fa-user-graduate fa-fw me-2"></i>Create
+                Subject</a
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="admin-error-404.html">Error 404</a>
+              <a class="nav-link" routerLink="/dashboard/all-subject"
+                ><i class="fas fa-user-graduate fa-fw me-2"></i>Subject List</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/create-service"
+                ><i class="fas fa-user-graduate fa-fw me-2"></i>Create
+                Service</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/all-service"
+                ><i class="fas fa-user-graduate fa-fw me-2"></i>Service List</a
+              >
             </li>
           </ul>
-        </li>
-
-        <!-- Title -->
-        <li class="nav-item ms-2 my-2">Documentation</li>
-
-        <!-- Menu item 9 -->
-        <li class="nav-item">
-          <a class="nav-link" href="docs/index.html"
-            ><i class="far fa-clipboard fa-fw me-2"></i>Documentation</a
-          >
-        </li>
-
-        <!-- Menu item 10 -->
-        <li class="nav-item">
-          <a class="nav-link" href="docs/changelog.html"
-            ><i class="fas fa-sitemap fa-fw me-2"></i>Changelog</a
-          >
         </li>
       </ul>
       <!-- Sidebar menu end -->

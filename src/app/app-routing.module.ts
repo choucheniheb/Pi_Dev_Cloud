@@ -32,6 +32,12 @@ import { OptionsListDashboardComponent } from './components/options-list-dashboa
 import { UpdateOptionComponent } from './components/update-option/update-option.component';
 import { UpdateUeComponent } from './components/update-ue/update-ue.component';
 import { UeListComponent } from './components/ue-list/ue-list.component';
+import { CreateSubjectComponent } from './components/create-subject/create-subject.component';
+import { SubjectListComponent } from './components/subject-list/subject-list.component';
+import { UpdateSubjectComponent } from './components/update-subject/update-subject.component';
+import { CreateServiceComponent } from './components/create-service/create-service.component';
+import { ServiceListComponent } from './components/service-list/service-list.component';
+import { UpdateServiceComponent } from './components/update-service/update-service.component';
 
 const routes: Routes = [
   {
@@ -41,21 +47,73 @@ const routes: Routes = [
       {
         path: '',
         component: HomeComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
       },
-      { path: 'blog', component: ArticlesComponent },
-      { path: 'blog-details/:id', component: ArticleDetailsComponent },
+      {
+        path: 'blog',
+        component: ArticlesComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
+      {
+        path: 'blog-details/:id',
+        component: ArticleDetailsComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
       { path: 'register', component: RegisterComponent },
       { path: 'login', component: LoginComponent },
-      { path: 'courses', component: CoursesComponent },
-      { path: 'courses-details/:id', component: CourseDetailsComponent },
-      { path: 'evenement', component: EvenementComponent },
-      { path: 'evenement-details/:id', component: EvenementDetailsComponent },
+      {
+        path: 'courses',
+        component: CoursesComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
+      {
+        path: 'courses-details/:id',
+        component: CourseDetailsComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
+      {
+        path: 'evenement',
+        component: EvenementComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
+      {
+        path: 'evenement-details/:id',
+        component: EvenementDetailsComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
       { path: 'create-reservation/:id', component: CreateReservComponent },
-      { path: 'create-avis/:id', component: CreateAvisComponent },
+      {
+        path: 'create-avis/:id',
+        component: CreateAvisComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
       { path: 'meeting-rooom', component: MeetingRoomComponent },
-      { path: 'options', component: OptionsListComponent },
-      { path: 'chat-bot', component: ChatbotComponent },
-      { path: 'option-details/:id', component: OptionDetailsComponent },
+      {
+        path: 'options',
+        component: OptionsListComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
+      {
+        path: 'chat-bot',
+        component: ChatbotComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
+      {
+        path: 'option-details/:id',
+        component: OptionDetailsComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
     ],
   },
   {
@@ -78,6 +136,12 @@ const routes: Routes = [
       { path: 'update-user/:id', component: UpdateUserComponent },
       { path: 'all-Options', component: OptionsListDashboardComponent },
       { path: 'update-option/:id', component: UpdateOptionComponent },
+      { path: 'create-subject', component: CreateSubjectComponent },
+      { path: 'all-subject', component: SubjectListComponent },
+      { path: 'update-subject/:id', component: UpdateSubjectComponent },
+      { path: 'create-service', component: CreateServiceComponent },
+      { path: 'all-service', component: ServiceListComponent },
+      { path: 'update-service/:id', component: UpdateServiceComponent },
       {
         path: 'update-unite-enseignement/:id',
         component: UpdateUeComponent,

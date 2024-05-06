@@ -41,6 +41,12 @@ import { OptionsListDashboardComponent } from './components/options-list-dashboa
 import { UpdateOptionComponent } from './components/update-option/update-option.component';
 import { UpdateUeComponent } from './components/update-ue/update-ue.component';
 import { UeListComponent } from './components/ue-list/ue-list.component';
+import { CreateSubjectComponent } from './components/create-subject/create-subject.component';
+import { SubjectListComponent } from './components/subject-list/subject-list.component';
+import { UpdateSubjectComponent } from './components/update-subject/update-subject.component';
+import { CreateServiceComponent } from './components/create-service/create-service.component';
+import { ServiceListComponent } from './components/service-list/service-list.component';
+import { UpdateServiceComponent } from './components/update-service/update-service.component';
 
 @NgModule({
   declarations: [
@@ -80,6 +86,12 @@ import { UeListComponent } from './components/ue-list/ue-list.component';
     UpdateOptionComponent,
     UpdateUeComponent,
     UeListComponent,
+    CreateSubjectComponent,
+    SubjectListComponent,
+    UpdateSubjectComponent,
+    CreateServiceComponent,
+    ServiceListComponent,
+    UpdateServiceComponent,
   ],
   imports: [
     BrowserModule,
