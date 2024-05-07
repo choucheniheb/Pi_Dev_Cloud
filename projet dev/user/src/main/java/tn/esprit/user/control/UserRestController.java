@@ -1,11 +1,13 @@
 package tn.esprit.user.control;
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.*;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +15,7 @@ import tn.esprit.user.dto.LoginRequest;
 import tn.esprit.user.dto.LoginResponse;
 import tn.esprit.user.entity.User;
 import tn.esprit.user.service.IUserService;
+import tn.esprit.user.service.JwtBlacklistService;
 import tn.esprit.user.service.jwt.CustomerServiceImpl;
 import tn.esprit.user.utils.JwtUtil;
 
@@ -29,6 +32,8 @@ public class UserRestController {
     private  CustomerServiceImpl customerService;
     private  JwtUtil jwtUtil;
     private  AuthenticationManager authenticationManager;
+    private JwtBlacklistService jwtBlacklistService;
+
 
 
 
@@ -107,6 +112,14 @@ public class UserRestController {
         System.out.println("token" + jwt);
 
         return ResponseEntity.ok(new LoginResponse(jwt));
+    }
+    @PostMapping("/logout/{token}")
+    public ResponseEntity<Void> logout(@PathVariable("token") String jwt) {
+        jwtBlacklistService.add(jwt);
+
+        SecurityContextHolder.clearContext();
+
+        return ResponseEntity.ok().build();
     }
 
 
