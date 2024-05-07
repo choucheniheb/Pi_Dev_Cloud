@@ -26,6 +26,16 @@
     </div>
     <!-- Name -->
     <div class="col-12">
+      <label class="form-label">Select Image *</label>
+      <input
+        type="file"
+        class="form-control"
+        aria-label="serviceImage"
+        (change)="onFileSelected($event)"
+      />
+    </div>
+    <!-- Name -->
+    <div class="col-12">
       <label class="form-label">subject *</label>
       <select id="subject" class="form-control" formControlName="subject">
         <option *ngFor="let subject of allSubject" [value]="subject.subjectId">

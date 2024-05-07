@@ -47,6 +47,9 @@ import { UpdateSubjectComponent } from './components/update-subject/update-subje
 import { CreateServiceComponent } from './components/create-service/create-service.component';
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { UpdateServiceComponent } from './components/update-service/update-service.component';
+import { AddRessourceComponent } from './components/add-ressource/add-ressource.component';
+import { RessourceListComponent } from './components/ressource-list/ressource-list.component';
+import { CalculeScoreComponent } from './components/calcule-score/calcule-score.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +95,9 @@ import { UpdateServiceComponent } from './components/update-service/update-servi
     CreateServiceComponent,
     ServiceListComponent,
     UpdateServiceComponent,
+    AddRessourceComponent,
+    RessourceListComponent,
+    CalculeScoreComponent,
   ],
   imports: [
     BrowserModule,

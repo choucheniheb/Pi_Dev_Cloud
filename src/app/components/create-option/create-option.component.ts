@@ -19,7 +19,6 @@ export class CreateOptionComponent {
 
   constructor(
     private fb: FormBuilder,
-    private fb1: FormBuilder,
     private router: Router,
     private optionsService: OptionsService,
     private uniteEnseignementService: UniteEnseignementService

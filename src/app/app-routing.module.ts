@@ -38,6 +38,9 @@ import { UpdateSubjectComponent } from './components/update-subject/update-subje
 import { CreateServiceComponent } from './components/create-service/create-service.component';
 import { ServiceListComponent } from './components/service-list/service-list.component';
 import { UpdateServiceComponent } from './components/update-service/update-service.component';
+import { AddRessourceComponent } from './components/add-ressource/add-ressource.component';
+import { RessourceListComponent } from './components/ressource-list/ressource-list.component';
+import { CalculeScoreComponent } from './components/calcule-score/calcule-score.component';
 
 const routes: Routes = [
   {
@@ -114,6 +117,12 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
       },
+      {
+        path: 'calcule-score',
+        component: CalculeScoreComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
     ],
   },
   {
@@ -142,6 +151,8 @@ const routes: Routes = [
       { path: 'create-service', component: CreateServiceComponent },
       { path: 'all-service', component: ServiceListComponent },
       { path: 'update-service/:id', component: UpdateServiceComponent },
+      { path: 'upload-ressource', component: AddRessourceComponent },
+      { path: 'all-ressource', component: RessourceListComponent },
       {
         path: 'update-unite-enseignement/:id',
         component: UpdateUeComponent,

@@ -29,4 +29,11 @@ export class OptionsService {
   modifySpecialite(option: any): Observable<any> {
     return this.http.put(BASIC_URL + '/modify', option);
   }
+
+  calculeScore(list: any, moyGen: any): Observable<any> {
+    return this.http.post(
+      BASIC_URL + '/calcule-score?moyenneGeneral=' + moyGen,
+      list
+    );
+  }
 }

@@ -12,6 +12,7 @@ import { SubjectService } from 'src/app/service/subject.service';
 export class CreateServiceComponent {
   serviceForm!: FormGroup;
   allSubject: any;
+  serviceImage: any;
 
   constructor(
     private fb: FormBuilder,
@@ -27,6 +28,11 @@ export class CreateServiceComponent {
       subject: [null, Validators.required],
     });
     this.getAllSubject();
+  }
+
+  onFileSelected(event: any) {
+    console.log('file selected', event.target.files[0]);
+    this.serviceImage = event.target.files[0];
   }
 
   getAllSubject() {
@@ -50,7 +56,7 @@ export class CreateServiceComponent {
       },
     };
     console.log(data);
-    this.serviceService.addNewService(data).subscribe(
+    this.serviceService.addNewService(data, this.serviceImage).subscribe(
       (res) => {
         console.log('Your Service was created successfully', 'Ok');
         this.router.navigateByUrl('/dashboard/all-subject');

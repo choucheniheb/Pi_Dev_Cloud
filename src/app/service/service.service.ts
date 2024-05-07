@@ -16,9 +16,12 @@ export class ServiceService {
     return this.http.get<Service[]>(url);
   }
 
-  addNewService(service: any): Observable<any> {
+  addNewService(service: any, serviceImage: any): Observable<any> {
+    const formData = new FormData();
+    formData.append('service', JSON.stringify(service));
+    formData.append('serviceImage', serviceImage);
     const url = `${this.baseUrl}/addservice`;
-    return this.http.post(url, service);
+    return this.http.post(url, formData);
   }
 
   updateService(service: any): Observable<any> {
