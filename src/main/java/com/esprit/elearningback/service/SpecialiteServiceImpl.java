@@ -10,7 +10,9 @@ import com.esprit.elearningback.repository.UniteEnseignementRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Service
@@ -19,6 +21,7 @@ public class SpecialiteServiceImpl implements ISpecialiteService {
     SpecialiteRepository specialiteRepository;
     UniteEnseignementRepository ueRepository;
     CoefOptionRepository coefOptionRepository;
+    CoefOptionServiceImp coefOptionService;
     public List<Specialite> retrieveAllSpecialites() {
         return specialiteRepository.findAll();
     }
@@ -49,6 +52,22 @@ public class SpecialiteServiceImpl implements ISpecialiteService {
     public Specialite updatePdfFile(Specialite specialite, String filePath) {
         specialite.setPdfFile(filePath);
         return specialiteRepository.save(specialite);
+    }
+
+    public Map<String, Double> calculeScore(Map<Long, Double> moyParUE,double moyenneGeneral) {
+        List<Specialite> specialites = specialiteRepository.findAll();
+        Map<String, Double> moyForEachSpecialite = new HashMap<String, Double>();
+        for (Specialite specialite : specialites) {
+            double score=moyenneGeneral*0.4;
+            for(Map.Entry<Long, Double> moyParUEEntry : moyParUE.entrySet()) {
+                CoefOption coefOption= coefOptionService.getCoefOptionForScor(specialite.getId(),moyParUEEntry.getKey());
+                if (coefOption != null) {
+                    score += moyParUEEntry.getValue() * ((double) coefOption.getCoefficient() / 100);
+                }
+            }
+            moyForEachSpecialite.put(specialite.getNom(),score);
+        }
+        return moyForEachSpecialite;
     }
 }
 

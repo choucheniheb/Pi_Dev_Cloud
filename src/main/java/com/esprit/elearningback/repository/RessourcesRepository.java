@@ -14,8 +14,8 @@ public interface RessourcesRepository
 
     Ressources findByRessourceName(String Ressource_name);
 
-    @Query("SELECT r FROM Ressources r WHERE r.subject.subjectId = :subjectId")
-    List<Ressources> getRessourcesBySubject(@Param("subjectId") long subjectId);
+    @Query("SELECT r FROM Ressources r WHERE r.service.serviceId = :serviceId")
+    List<Ressources> getRessourcesByService(@Param("serviceId") long serviceId);
 
 
 

@@ -17,7 +17,14 @@ public class Service {
 
     private String serviceName;
 
+    @Column(length = 5000)
     private String serviceDescription;
+
+    private String imageUrl;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "service", cascade = CascadeType.ALL)
+    private List<Ressources> ressources;
 
     @ManyToOne
     @JoinColumn(name = "subject_id" , nullable= true)

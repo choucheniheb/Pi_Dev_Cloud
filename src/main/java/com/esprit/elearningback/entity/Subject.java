@@ -19,10 +19,6 @@ public class Subject {
 
     @JsonIgnore
     @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
-    private List<Ressources> ressources;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "subject", cascade = CascadeType.ALL)
     private List<Service> services;
 
     // Constructors, getters, and setters can be added here if needed

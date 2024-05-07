@@ -21,12 +21,11 @@ public class Ressources {
     private String ressourceName;
     private String ressourceType;
 
-    @Lob
-    private byte[] fileData; // New attribute to store the file data
+    private String ressourceUrl;
 
     @ManyToOne
-    @JoinColumn(name = "subject_id", nullable = true)
-    private Subject subject;
+    @JoinColumn(name = "service_id", nullable = true)
+    private Service service;
 
     // Getters and setters
 

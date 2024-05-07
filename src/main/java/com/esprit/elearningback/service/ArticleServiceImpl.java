@@ -20,7 +20,6 @@ public class ArticleServiceImpl implements ArticleService{
 
     @Autowired
     private ArticleRepository articleRepository;
-    private ImageService imageService;
 
     public Article saveArticle(Article article){
         article.setLikeCount(0);

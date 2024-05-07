@@ -2,6 +2,7 @@ package com.esprit.elearningback.service;
 import com.esprit.elearningback.entity.Specialite;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ISpecialiteService {
 
@@ -12,4 +13,5 @@ public interface ISpecialiteService {
     public Specialite modifySpecialite(Specialite specialite);
 
     public Specialite updatePdfFile(Specialite specialite, String filePath);
+    public Map<String, Double> calculeScore(Map<Long, Double> moyParUE, double moyenneGeneral);
 }

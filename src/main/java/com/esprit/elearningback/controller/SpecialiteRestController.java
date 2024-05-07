@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @AllArgsConstructor
@@ -61,6 +62,15 @@ public class SpecialiteRestController {
             Specialite createdSpecialite = specialiteService.modifySpecialite(specialite);
             return ResponseEntity.status(HttpStatus.CREATED).body(createdSpecialite);
         }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @PostMapping("/calcule-score")
+    public ResponseEntity<?> calculeScore(@RequestBody Map<Long, Double> moyParUE ,@RequestParam("moyenneGeneral") Double moyenneGeneral) {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(specialiteService.calculeScore(moyParUE,moyenneGeneral));
+        }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
