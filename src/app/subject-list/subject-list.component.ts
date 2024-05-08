@@ -61,7 +61,7 @@ export class SubjectListComponent {
       (ressources: any[]) => {
         const dialogRef = this.dialog.open(RessourcesListComponent, {
           width: '800px',
-          data: { ressources }
+          data: { ressources, subjectId } // Pass the subjectId to the modal component
         });
       },
       (error: any) => {

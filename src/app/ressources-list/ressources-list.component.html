@@ -5,10 +5,17 @@
     <li *ngFor="let ressource of ressourcesList">
       <h3>{{ ressource.ressourceName }}</h3>
       <p>Type: {{ ressource.ressource_type }}</p>
+      <ng-container *ngIf="ressource.ressource_type === 'image'">
+        <img [src]="ressource.fileData" alt="Resource Image">
+      </ng-container>
+      <ng-container *ngIf="ressource.ressource_type === 'pdf'">
+        <iframe [src]="ressource.fileData" width="100%" height="500px"></iframe>
+      </ng-container>
+      <button (click)="downloadResource(ressource)">Download</button>
     </li>
   </ul>
 </div>
 
 <div *ngIf="ressourcesList.length === 0">
-  <p>No ressources available.</p>
+  <p>No resources available.</p>
 </div>
