@@ -25,6 +25,7 @@ export class CreateEventComponent implements OnInit {
   event: Event = {
     id: 0,
     nom: '',
+    type: '',
     nbrPlace: 0,
     date_fin: new Date(),
     date_deb: new Date(),
@@ -79,6 +80,7 @@ export class CreateEventComponent implements OnInit {
 
   saveEvent() {
     this.event.nom = this.eventForm.value.nom;
+    this.event.nom = this.eventForm.value.type;
     this.event.lieu = this.eventForm.value.lieu;
     this.event.date_deb = this.eventForm.value.date_deb;
     this.event.date_fin = this.eventForm.value.date_fin;

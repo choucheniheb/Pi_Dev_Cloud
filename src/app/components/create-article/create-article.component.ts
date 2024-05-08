@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ArticleService } from 'src/app/service/article.service';
 import { find, get, pull } from 'lodash';
+import { JwtService } from 'src/app/service/jwt.service';
 
 @Component({
   selector: 'app-create-article',
@@ -18,7 +19,8 @@ export class CreateArticleComponent {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private articleService: ArticleService
+    private articleService: ArticleService,
+    private jwtService: JwtService
   ) {}
 
   ngOnInit() {

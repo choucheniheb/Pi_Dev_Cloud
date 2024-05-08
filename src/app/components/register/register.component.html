@@ -121,8 +121,9 @@
               class="form-control"
               formControlName="usergenderr"
             >
-              <option value="male">Male</option>
-              <option value="female">female</option>
+              <option *ngFor="let genre of genres" [value]="genre">
+                {{ genre }}
+              </option>
             </select>
           </div>
 

@@ -35,4 +35,8 @@ export class ArticleService {
   updatePost(article: any): Observable<any> {
     return this.http.put(`${BASIC_URL}api/article/modify-article`, article);
   }
+
+  statArticle(): Observable<any> {
+    return this.http.get<any>(`${BASIC_URL}api/article/stat`);
+  }
 }

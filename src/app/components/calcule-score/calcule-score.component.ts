@@ -14,7 +14,7 @@ export class CalculeScoreComponent {
   moyUEList: any = [];
   scoreForm!: FormGroup;
   data: any = {};
-  allScore: any;
+  allScore: any = null;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -39,6 +39,10 @@ export class CalculeScoreComponent {
     );
   }
 
+  objectKeys(obj: any): string[] {
+    return Object.keys(obj);
+  }
+
   calculeScore() {
     this.data = {};
     for (let index = 0; index < this.moyUEList.length; index++) {
@@ -52,6 +56,7 @@ export class CalculeScoreComponent {
         (res) => {
           this.allScore = res;
           console.log(this.allScore);
+          console.log(typeof this.allScore);
         },
         (error) => {
           console.log('Error');

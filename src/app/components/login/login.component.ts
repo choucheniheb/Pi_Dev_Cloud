@@ -27,7 +27,7 @@ export class LoginComponent {
             const roles: string[] = decodedToken.roles; // Assuming roles are stored in an array
             if (roles.includes('ADMIN')) {
               this.router.navigate(['/dashboard']);
-            } else if (roles.includes('ROLE_USER')) {
+            } else if (roles.includes('USER')) {
               this.router.navigate(['/']);
             } else {
               this.router.navigate(['/login'], {

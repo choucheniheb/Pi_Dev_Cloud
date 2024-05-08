@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { JwtService } from 'src/app/service/jwt.service';
 
 @Component({
@@ -9,8 +10,13 @@ import { JwtService } from 'src/app/service/jwt.service';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  genres: string[] = ['male', 'female'];
 
-  constructor(private service: JwtService, private fb: FormBuilder) {}
+  constructor(
+    private service: JwtService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -24,13 +30,31 @@ export class RegisterComponent implements OnInit {
       usernationaliter: ['', [Validators.required]],
     });
   }
-  submitForm() {
-    this.registerForm.value.rle = 'USER';
-    this.registerForm.value.useretat = true;
-    console.log(this.registerForm?.value);
 
-    this.service.register(this.registerForm?.value).subscribe((response) => {
-      console.log(response);
-    });
+  submitForm() {
+    if (this.registerForm.valid) {
+      const user = {
+        ...this.registerForm.value,
+        rle: 'USER',
+        useretat: true,
+      };
+
+      console.log('Submitting user:', user); // Log the data being sent
+
+      this.service.register(user).subscribe({
+        next: (response) => {
+          console.log('User registered successfully:', response);
+          const userEmail = this.registerForm.get('useremail')?.value;
+          this.router.navigate(['/verify'], {
+            queryParams: { email: userEmail },
+          });
+        },
+        error: (error) => {
+          console.error('Failed to register user:', error);
+        },
+      });
+    } else {
+      console.error('Form is not valid:', this.registerForm.errors);
+    }
   }
 }

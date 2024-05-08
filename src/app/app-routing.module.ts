@@ -43,6 +43,12 @@ import { RessourceListComponent } from './components/ressource-list/ressource-li
 import { CalculeScoreComponent } from './components/calcule-score/calcule-score.component';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { UpdateEventComponent } from './components/update-event/update-event.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ResetPasswordComponentComponent } from './components/reset-password-component/reset-password-component.component';
+import { ForgotPassword2Component } from './components/forgot-password2/forgot-password2.component';
+import { VerifpasswordComponent } from './components/verifpassword/verifpassword.component';
+import { StatRoleComponentComponent } from './components/stat-role-component/stat-role-component.component';
+import { StatArticleComponent } from './components/stat-article/stat-article.component';
 
 const routes: Routes = [
   {
@@ -125,38 +131,171 @@ const routes: Routes = [
         canActivate: [AuthGuard],
         data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
       },
+      {
+        path: 'user-profile',
+        component: UserProfileComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_USER', 'ROLE_ADMIN'] },
+      },
+      { path: 'forgot-password', component: ForgotPassword2Component },
+      { path: 'reset-password', component: ResetPasswordComponentComponent },
+      { path: 'verify', component: VerifpasswordComponent },
     ],
   },
   {
     path: 'dashboard',
     component: TemplateAllBackComponent,
     children: [
-      { path: '', component: TemplateAllBackComponent },
-      { path: 'create-article', component: CreateArticleComponent },
-      { path: 'all-article', component: AllArticleDashboardComponent },
+      {
+        path: '',
+        component: TemplateAllBackComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'create-article',
+        component: CreateArticleComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'all-article',
+        component: AllArticleDashboardComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
       {
         path: 'create-unite-enseignement',
         component: CreateUniteEnseignementComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
       },
-      { path: 'create-option', component: CreateOptionComponent },
-      { path: 'create-event', component: CreateEventComponent },
-      { path: 'stat-reservation', component: StatReservationComponent },
-      { path: 'all-reservation', component: ReservationsComponent },
-      { path: 'all-users', component: UserListComponent },
-      { path: 'update-blog/:id', component: UpdateArticleComponent },
-      { path: 'update-user/:id', component: UpdateUserComponent },
-      { path: 'all-Options', component: OptionsListDashboardComponent },
-      { path: 'update-option/:id', component: UpdateOptionComponent },
-      { path: 'create-subject', component: CreateSubjectComponent },
-      { path: 'all-subject', component: SubjectListComponent },
-      { path: 'update-subject/:id', component: UpdateSubjectComponent },
-      { path: 'create-service', component: CreateServiceComponent },
-      { path: 'all-service', component: ServiceListComponent },
-      { path: 'update-service/:id', component: UpdateServiceComponent },
-      { path: 'upload-ressource', component: AddRessourceComponent },
-      { path: 'all-ressource', component: RessourceListComponent },
-      { path: 'event-list', component: EventListComponent },
-      { path: 'update-event/:id', component: UpdateEventComponent },
+      {
+        path: 'create-option',
+        component: CreateOptionComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'create-event',
+        component: CreateEventComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'stat-reservation',
+        component: StatReservationComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'all-reservation',
+        component: ReservationsComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'all-users',
+        component: UserListComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'update-blog/:id',
+        component: UpdateArticleComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'update-user/:id',
+        component: UpdateUserComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'all-Options',
+        component: OptionsListDashboardComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'update-option/:id',
+        component: UpdateOptionComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'create-subject',
+        component: CreateSubjectComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'all-subject',
+        component: SubjectListComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'update-subject/:id',
+        component: UpdateSubjectComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'create-service',
+        component: CreateServiceComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'all-service',
+        component: ServiceListComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'update-service/:id',
+        component: UpdateServiceComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'upload-ressource',
+        component: AddRessourceComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'all-ressource',
+        component: RessourceListComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'event-list',
+        component: EventListComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'update-event/:id',
+        component: UpdateEventComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'stat-role',
+        component: StatRoleComponentComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
+      {
+        path: 'stat-article',
+        component: StatArticleComponent,
+        canActivate: [AuthGuard],
+        data: { roles: ['ROLE_ADMIN'] },
+      },
       {
         path: 'update-unite-enseignement/:id',
         component: UpdateUeComponent,

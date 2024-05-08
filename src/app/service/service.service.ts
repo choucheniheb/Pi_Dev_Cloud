@@ -43,4 +43,8 @@ export class ServiceService {
     const url = `${this.baseUrl}/getservicebyid/${subjectId}`;
     return this.http.get<Service[]>(url);
   }
+  getTrending(): Observable<Service[]> {
+    const url = `${this.baseUrl}/trending`;
+    return this.http.get<Service[]>(url);
+  }
 }

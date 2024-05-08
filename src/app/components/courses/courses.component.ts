@@ -5,7 +5,7 @@ import { SubjectService } from 'src/app/service/subject.service';
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.css']
+  styleUrls: ['./courses.component.css'],
 })
 export class CoursesComponent {
   allService: any;
@@ -15,6 +15,17 @@ export class CoursesComponent {
   }
   getAllService() {
     this.serviceService.getServices().subscribe(
+      (res) => {
+        console.log(res);
+        this.allService = res;
+      },
+      (error) => {
+        console.log('Error while fetching Service');
+      }
+    );
+  }
+  getTrending() {
+    this.serviceService.getTrending().subscribe(
       (res) => {
         console.log(res);
         this.allService = res;

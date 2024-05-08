@@ -52,6 +52,12 @@ import { RessourceListComponent } from './components/ressource-list/ressource-li
 import { CalculeScoreComponent } from './components/calcule-score/calcule-score.component';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { UpdateEventComponent } from './components/update-event/update-event.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { ForgotPassword2Component } from './components/forgot-password2/forgot-password2.component';
+import { ResetPasswordComponentComponent } from './components/reset-password-component/reset-password-component.component';
+import { VerifpasswordComponent } from './components/verifpassword/verifpassword.component';
+import { StatRoleComponentComponent } from './components/stat-role-component/stat-role-component.component';
+import { StatArticleComponent } from './components/stat-article/stat-article.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +108,12 @@ import { UpdateEventComponent } from './components/update-event/update-event.com
     CalculeScoreComponent,
     EventListComponent,
     UpdateEventComponent,
+    UserProfileComponent,
+    ForgotPassword2Component,
+    ResetPasswordComponentComponent,
+    VerifpasswordComponent,
+    StatRoleComponentComponent,
+    StatArticleComponent,
   ],
   imports: [
     BrowserModule,
