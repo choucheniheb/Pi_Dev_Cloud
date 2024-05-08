@@ -48,4 +48,9 @@ public class RatingController {
         return ratingService.countServicesByRating();
     }
 
+    @GetMapping("/rating-by-service/{id}")
+    public List<Rating> getByServiceId(@PathVariable Long id) {
+        return ratingService.getByServiceId(id);
+    }
+
 }

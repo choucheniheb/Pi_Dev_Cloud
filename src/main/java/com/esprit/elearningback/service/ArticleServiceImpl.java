@@ -1,6 +1,7 @@
 package com.esprit.elearningback.service;
 
 import com.esprit.elearningback.entity.Article;
+import com.esprit.elearningback.entity.Event;
 import com.esprit.elearningback.repository.ArticleRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class ArticleServiceImpl implements ArticleService{
@@ -62,6 +61,24 @@ public class ArticleServiceImpl implements ArticleService{
         }else {
             throw new EntityNotFoundException("Article not found");
         }
+    }
+
+    @Override
+    public Map<String, Integer> statArticle() {
+        Map<String, Integer> statResult = new HashMap<>();
+        List<Article> articles = articleRepository.findAll();
+
+        for (Article article : articles) {
+            int viewCount = article.getViewCount();
+            statResult.put(article.getTitle(), viewCount);
+        }
+
+        return statResult;
+    }
+
+    @Override
+    public List<Article> getGetByTags(List<String> tags) {
+        return articleRepository.findByTags(tags);
     }
 
 }

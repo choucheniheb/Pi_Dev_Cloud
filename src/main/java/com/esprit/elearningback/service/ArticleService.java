@@ -7,6 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public interface ArticleService {
@@ -17,4 +18,6 @@ public interface ArticleService {
     public Article getArticleById(long articleId);
     public Page<Article> getPopularArticles();
     public Article modifyArticle(Article article);
+    public Map<String, Integer> statArticle();
+    public List<Article> getGetByTags(List<String> tags);
 }

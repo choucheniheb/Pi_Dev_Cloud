@@ -1,5 +1,6 @@
 package com.esprit.elearningback.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -39,6 +41,7 @@ public class User implements UserDetails {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

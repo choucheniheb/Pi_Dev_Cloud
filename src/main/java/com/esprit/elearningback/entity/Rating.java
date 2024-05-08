@@ -16,6 +16,7 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idRating;
     private LocalDateTime timestamp;
+    private String comment;
 
     private float rating;
 

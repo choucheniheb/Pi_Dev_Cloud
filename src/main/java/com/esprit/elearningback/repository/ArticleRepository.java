@@ -13,5 +13,6 @@ public interface ArticleRepository extends JpaRepository<Article,Long> {
     Page<Article> findAllByOrderByCreatedAtDesc(Pageable pageable);
     Page<Article> findAllByOrderByViewCountDesc(Pageable pageable);
     List<Article> findAllByOrderByIdAsc();
+    List<Article> findByTags(List<String> tags);
 
 }

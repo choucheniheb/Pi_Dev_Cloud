@@ -2,6 +2,7 @@ package com.esprit.elearningback.controller;
 
 import com.esprit.elearningback.entity.Article;
 import com.esprit.elearningback.entity.Service;
+import com.esprit.elearningback.entity.Subject;
 import com.esprit.elearningback.service.ImageService;
 import com.esprit.elearningback.service.ServiceService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -77,6 +78,11 @@ public class ServiceController {
     public ResponseEntity<Service> findServiceById(@PathVariable Long id) {
         Service service = serviceService.getServiceById(id);
         return ResponseEntity.ok(service);
+    }
+
+    @GetMapping("/trending")
+    public List<Service> getTrendingService(){
+        return serviceService.getTrendingService();
     }
 
 }

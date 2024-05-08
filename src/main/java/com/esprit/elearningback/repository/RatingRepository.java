@@ -17,4 +17,8 @@ public interface RatingRepository
             "GROUP BY r.rating")
     List<Object[]> countServicesByRating();
 
+    @Query("SELECT r " +
+            "FROM Rating r " +
+            "where r.service.serviceId= :serviceId")
+    List<Rating> findByServiceId(Long serviceId);
 }

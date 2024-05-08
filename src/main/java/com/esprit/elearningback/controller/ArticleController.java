@@ -103,4 +103,14 @@ public class ArticleController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/stat")
+    public Map<String, Integer> statArticle(){
+        return articleService.statArticle();
+    }
+
+    @GetMapping("/get-by-tags")
+    public ResponseEntity<?>  statArticle(@RequestBody List<String> tags){
+        return ResponseEntity.status(HttpStatus.OK).body(articleService.getGetByTags(tags));
+    }
 }

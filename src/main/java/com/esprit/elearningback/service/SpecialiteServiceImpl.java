@@ -4,6 +4,7 @@ package com.esprit.elearningback.service;
 import com.esprit.elearningback.entity.CoefOption;
 import com.esprit.elearningback.entity.Specialite;
 import com.esprit.elearningback.entity.UniteEnseignement;
+import com.esprit.elearningback.entity.User;
 import com.esprit.elearningback.repository.CoefOptionRepository;
 import com.esprit.elearningback.repository.SpecialiteRepository;
 import com.esprit.elearningback.repository.UniteEnseignementRepository;
@@ -22,6 +23,8 @@ public class SpecialiteServiceImpl implements ISpecialiteService {
     UniteEnseignementRepository ueRepository;
     CoefOptionRepository coefOptionRepository;
     CoefOptionServiceImp coefOptionService;
+    EmailService emailService;
+    IUserService userService;
     public List<Specialite> retrieveAllSpecialites() {
         return specialiteRepository.findAll();
     }
@@ -36,6 +39,11 @@ public class SpecialiteServiceImpl implements ISpecialiteService {
                 coefOption.setUniteEnseignement(ue);
                 coefOption.setSpecialite(c);
                 c.getCoefOptions().add(coefOption);
+            }
+            String subject = "new option";
+            String body = "New Option was added to esprit ,option name:"+ c.getNom();
+            for (User user : userService.retrieveAllUsers()){
+                emailService.sendEmail(user.getUseremail(), subject, body);
             }
             return specialiteRepository.save(c);
         }

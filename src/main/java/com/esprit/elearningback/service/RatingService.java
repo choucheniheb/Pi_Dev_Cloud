@@ -51,5 +51,10 @@ public class RatingService {
 
         return countByRating;
     }
+    public List<Rating> getByServiceId(Long id) {
+
+        return ratingRepository.findByServiceId(id);
+
+    }
 
 }

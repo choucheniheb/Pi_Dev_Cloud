@@ -2,6 +2,7 @@ package com.esprit.elearningback.service;
 
 
 import com.esprit.elearningback.entity.Reservation;
+import com.esprit.elearningback.entity.Userr;
 import com.esprit.elearningback.repository.IEventRepository;
 import com.esprit.elearningback.repository.ReservRepository;
 import com.esprit.elearningback.entity.Event;
@@ -11,7 +12,6 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.awt.*;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
@@ -58,11 +58,14 @@ public class ReservService implements IReservService{
     public Reservation AddReservationAndAssign(Reservation reservation,long IdEvent) {
         Event event = eventRepository.findById(IdEvent).get();
         reservation.setEvent(event);
-
+        Userr user = new Userr(); // Assuming Userr has a default constructor
+        user.setId(2L);
+        reservation.setUserr(user);
         // Obtenez la date actuelle
         LocalDate dateActuelle = LocalDate.now();
 // Affectez la date actuelle à la réservation
         reservation.setDate_reser(dateActuelle);
+
         return reservRepository.save(reservation);
 
     }
@@ -76,7 +79,7 @@ public class ReservService implements IReservService{
 
             eventRepository.save(event);
             /**************** lel ssmmsss ki tzid compte **********/
-//
+
 //            Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
 //       Message message = Message.creator(
 //               new com.twilio.type.PhoneNumber("+21696212001"), // najem nbadlou dynamic userDtoCreation.getTel()
