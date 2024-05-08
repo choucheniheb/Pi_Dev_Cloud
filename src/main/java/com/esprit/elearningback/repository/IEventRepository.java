@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public interface IEventRepository extends JpaRepository<Event,Long> {
@@ -22,5 +23,11 @@ public interface IEventRepository extends JpaRepository<Event,Long> {
             "           ELSE 0 " +
             "       END) DESC, e.type")
     List<Event> findEventsByUserOrderByParticipation(@Param("userId") Long userId);
+
+    @Query("SELECT SUM(CASE WHEN a.status = 'Positive' THEN 1 ELSE 0 END) AS positiveCount, " +
+            "SUM(CASE WHEN a.status = 'Neutral' THEN 1 ELSE 0 END) AS neutralCount, " +
+            "SUM(CASE WHEN a.status = 'Negative' THEN 1 ELSE 0 END) AS negativeCount " +
+            "FROM Event e JOIN e.avis a WHERE e.id = :eventId")
+    Map<String, Long> countAvisByStatusForEvent(@Param("eventId") Long eventId);
 
 }

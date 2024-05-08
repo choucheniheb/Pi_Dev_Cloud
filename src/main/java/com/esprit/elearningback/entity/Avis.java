@@ -18,6 +18,7 @@ public class Avis {
     private long id;
     private String contenu;
     private LocalDate dateAvis;
+    private String status;
     @ManyToOne
     private Event event;
 

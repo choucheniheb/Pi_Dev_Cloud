@@ -12,12 +12,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 
 @AllArgsConstructor
 @Slf4j
 @RestController
-    @RequestMapping("api/evenement")
+@RequestMapping("api/evenement")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 
 public class EventController {
@@ -30,6 +31,13 @@ public class EventController {
     private Cloudinary cloudinary;
     private static final String UPLOAD_DIR = "./main/java/com.example.intershipmanagement/assets";
 
+
+
+    @GetMapping("/{eventId}/countAvisByStatus")
+    public ResponseEntity<Map<String, Long>> countAvisByStatusForEvent(@PathVariable Long eventId) {
+        Map<String, Long> statusCounts = eventService.countAvisByStatusForEvent(eventId);
+        return ResponseEntity.ok(statusCounts);
+    }
 
 
     @PostMapping("/add")
@@ -68,7 +76,7 @@ public class EventController {
         return eventService.updateEvent(event);
     }
 
-   ///upload Image///
+    ///upload Image///
    /*@PostMapping("/upload")
    public String singleFileUpload(@RequestParam("file") MultipartFile file, RedirectAttributes redirectAttributes) {
 
@@ -134,10 +142,3 @@ public class EventController {
         return ResponseEntity.ok(events);
     }
 }
-
-
-
-
-
-
-

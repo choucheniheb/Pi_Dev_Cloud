@@ -7,12 +7,14 @@ import com.esprit.elearningback.repository.AvisRepo;
 import com.esprit.elearningback.repository.IEventRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
 @AllArgsConstructor
 public class AvisService implements IAvisService{
+    private final BadWordFilterService badWordFilterService;
     IEventRepository eventRepository;
     AvisRepo avisRepo;
 
@@ -44,8 +46,14 @@ public class AvisService implements IAvisService{
     }
 
     @Override
+    @Transactional
     public Avis AvisAndAssign(Avis avis, long IdEvent) {
         Event event = eventRepository.findById(IdEvent).get();
+        if (event != null ) {
+            if (badWordFilterService.containsBadWord(avis.getContenu())) {
+                throw new IllegalArgumentException("Comment contain inappropriate content or contains a subject that should not be posted here. Please review your post before submitting.");
+            }}
+
         avis.setEvent(event);
         return avisRepo.save(avis);
     }
