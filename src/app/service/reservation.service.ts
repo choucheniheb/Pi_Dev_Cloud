@@ -82,6 +82,6 @@ export class ReservationService {
     return this.http.get(`${this.apiServer}statistics/${year}`);
   }
   statEnseignatParSpecialite(): Observable<any> {
-    return this.http.get<any>(`${this.apiServer}statEtudiantParSpecialite`);
+    return this.http.get<any>(`${this.apiServer}statReservationParEvent`);
   }
 }

@@ -24,6 +24,7 @@
     <!-- row -->
   </div>
   <!-- container -->
+  <div class="events-coundwon-btn pt-30"></div>
 </section>
 
 <!--====== PAGE BANNER PART ENDS ======-->
@@ -31,6 +32,7 @@
 <!--====== EVENTS PART START ======-->
 
 <section id="event-page" class="pt-90 pb-120 gray-bg">
+  <a class="main-btn" (click)="getEventsByUserType()">preferences</a>
   <div class="container">
     <div class="row">
       <ng-container *ngFor="let event of events">
@@ -51,9 +53,9 @@
                 ><i class="fa fa-calendar"></i>
                 {{ event.date_fin | date : "yyyy-MM-dd" }}</span
               >
-              <a routerLink="/evenement-details/{{ event.id }}"
-                ><h4>{{ event.nom }}</h4></a
-              >
+              <a routerLink="/evenement-details/{{ event.id }}">
+                <h4>{{ event.nom }}</h4>
+              </a>
               <span
                 ><i class="fa fa-bullseye" aria-hidden="true"></i>
                 {{ event.type }}</span

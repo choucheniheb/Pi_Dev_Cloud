@@ -41,6 +41,8 @@ import { UpdateServiceComponent } from './components/update-service/update-servi
 import { AddRessourceComponent } from './components/add-ressource/add-ressource.component';
 import { RessourceListComponent } from './components/ressource-list/ressource-list.component';
 import { CalculeScoreComponent } from './components/calcule-score/calcule-score.component';
+import { EventListComponent } from './components/event-list/event-list.component';
+import { UpdateEventComponent } from './components/update-event/update-event.component';
 
 const routes: Routes = [
   {
@@ -153,6 +155,8 @@ const routes: Routes = [
       { path: 'update-service/:id', component: UpdateServiceComponent },
       { path: 'upload-ressource', component: AddRessourceComponent },
       { path: 'all-ressource', component: RessourceListComponent },
+      { path: 'event-list', component: EventListComponent },
+      { path: 'update-event/:id', component: UpdateEventComponent },
       {
         path: 'update-unite-enseignement/:id',
         component: UpdateUeComponent,

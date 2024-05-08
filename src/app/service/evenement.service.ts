@@ -26,4 +26,8 @@ export class EvenementService {
   getEventsByUserOrderByParticipation(userId: number): Observable<Event[]> {
     return this.http.get<Event[]>(`${this.apiUrl}eventsByUser/${userId}`);
   }
+
+  countAvisByStatus(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}${id}/countAvisByStatus`);
+  }
 }

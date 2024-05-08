@@ -21,26 +21,6 @@
     <div class="offcanvas-body sidebar-content d-flex flex-column bg-dark">
       <!-- Sidebar menu START -->
       <ul class="navbar-nav flex-column" id="navbar-sidebar">
-        <!-- Menu item 3 -->
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard/create-event"
-            ><i class="fas fa-user-graduate fa-fw me-2"></i>Create Event</a
-          >
-        </li>
-
-        <!-- Menu item 3 -->
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard/stat-reservation"
-            ><i class="fas fa-user-graduate fa-fw me-2"></i>stat reservation</a
-          >
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/dashboard/all-reservation"
-            ><i class="fas fa-user-graduate fa-fw me-2"></i>all reservation</a
-          >
-        </li>
-
         <li class="nav-item">
           <a class="nav-link" routerLink="/dashboard/all-users"
             ><i class="fas fa-user-graduate fa-fw me-2"></i>All Users</a
@@ -119,6 +99,46 @@
               <a class="nav-link" routerLink="/dashboard/all-unite-enseignement"
                 ><i class="fas fa-user-graduate fa-fw me-2"></i> All Unite
                 Enseignement</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            href="#collapseEvent"
+            role="button"
+            aria-expanded="false"
+            aria-controls="collapseEvent"
+          >
+            <i class="fas fa-user-tie fa-fw me-2"></i>Event
+          </a>
+          <ul
+            class="nav collapse flex-column"
+            id="collapseEvent"
+            data-bs-parent="#navbar-sidebar"
+          >
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/create-event"
+                ><i class="fas fa-user-graduate fa-fw me-2"></i>Create Event</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/event-list"
+                ><i class="fas fa-user-graduate fa-fw me-2"></i>All Event</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/stat-reservation"
+                ><i class="fas fa-user-graduate fa-fw me-2"></i>stat
+                reservation</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/dashboard/all-reservation"
+                ><i class="fas fa-user-graduate fa-fw me-2"></i>all
+                reservation</a
               >
             </li>
           </ul>

@@ -4,6 +4,7 @@ export class Avis {
   constructor(
     public id?: number,
     public contenu?: string,
-    public event?: Event
+    public event?: Event,
+    public status?: string
   ) {}
 }

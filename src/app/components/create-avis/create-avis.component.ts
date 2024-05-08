@@ -5,6 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Avis } from 'src/app/model/Avis';
 import { AvisService } from 'src/app/service/avis.service';
+import { GoogleAiService } from 'src/app/service/google-ai.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-create-avis',
@@ -17,14 +19,17 @@ export class CreateAvisComponent {
   eventId!: number;
   contenu: string = '';
   avis: Avis[] = [];
+  submissionSuccess: boolean = false;
 
   constructor(
     private avisService: AvisService,
     private router: Router,
     private formBuilder: FormBuilder,
     private http: HttpClient, // Ajout de HttpClient
-    private route: ActivatedRoute // Injectez ActivatedRoute ici
+    private route: ActivatedRoute, // Injectez ActivatedRoute ici
+    private googleAiService: GoogleAiService // Inject GoogleAiService
   ) {}
+
   ngOnInit(): void {
     this.avisForm = this.formBuilder.group({
       contenu: ['', [Validators.required]], // Correction ici: Ajout du crochet fermant
@@ -34,17 +39,56 @@ export class CreateAvisComponent {
     });
   }
 
-  saveEvent(idEvent: number) {
-    // Assurez-vous de passer l'idEvent en tant que paramètre à cette méthode
+  async saveEvent() {
     if (this.avisForm.valid) {
-      this.avisService
-        .addAvisAndAssignEvent(this.avisForm.value, this.eventId)
+      // Sortir de la fonction si un mot inapproprié est détecté
+      const avisDescription = this.avisForm.value.contenu;
+      this.googleAiService
+        .generateStory(
+          'Generate un opinion selon l avis et les emotions d utilisateur et la réponse doit être que avec un mot: positive, neutral or negative. L avis est ' +
+            avisDescription
+        )
         .subscribe(
-          (data) => {
-            console.log(data);
-            this.router.navigate(['/evenement']);
+          (res) => {
+            const status = res.candidates[0].content.parts[0].text;
+
+            const newAvis: Avis = {
+              status: status,
+              contenu: avisDescription,
+            };
+
+            this.avisService
+              .addAvisAndAssignEvent(newAvis, this.eventId)
+              .subscribe(
+                (data) => {
+                  alert('Avis added successfully '),
+                    console.log('Avis added successfully:', data);
+                  this.submissionSuccess = true;
+                  this.router.navigate(['/evenement']);
+                },
+                (error) => {
+                  // Handle errors here
+                  console.error('Error adding comment:', error);
+                  location.reload();
+
+                  // Check for a specific error message and display a custom alert
+                  if (error && typeof error === 'string') {
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: error,
+                    });
+                  } else {
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Comment contains inappropriate content or a subject that should not be posted here. Please review your post before submitting.',
+                    });
+                  }
+                }
+              );
           },
-          (error) => console.error('Error:', error)
+          (error) => console.error('Error generating status:', error)
         );
     } else {
       console.error("Le formulaire n'est pas valide.");
@@ -53,8 +97,7 @@ export class CreateAvisComponent {
 
   onSubmit() {
     if (this.avisForm.valid) {
-      console.log(this.avisForm.value);
-      this.saveEvent(this.aviis); // Utilisez la propriété eventId lors de l'appel de saveEvent
+      this.saveEvent();
     } else {
       console.log(
         "Le formulaire n'est pas valide. Veuillez remplir tous les champs correctement."

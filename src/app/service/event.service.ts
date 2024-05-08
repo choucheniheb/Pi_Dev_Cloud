@@ -38,8 +38,8 @@ export class EventService {
     );
   }
 
-  updateEvent(event: Event) {
-    return this._http.put<Event>(
+  updateEvent(event: any) {
+    return this._http.put<any>(
       this.apiServer + 'update',
       event,
       this.httpOptions

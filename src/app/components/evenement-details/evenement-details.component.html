@@ -62,17 +62,10 @@
                 ></a
               >
               <img [src]="eventData.imagecloud.imageUrl" alt="Event" />
-              <p>
-                Accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae ab illo inventore veritatis et quasi architecto beatae
-                vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia
-                voluptas sit aspernatur aut odit aut fugit, sed quia
-                consequuntur magni dolores eos qui ratione voluptatem sequi
-                nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor
-                sit amet, consectetur, adipisci velit, sed quia non numquam eius
-                modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                voluptatem. Ut enim ad minima veniam
-              </p>
+              <p>positive Count:{{ countAvis.positiveCount }}</p>
+              <p>neutral Count:{{ countAvis.neutralCount }}</p>
+              <p>negative Count:{{ countAvis.negativeCount }}</p>
+
               <div class="blog-comment pt-45">
                 <div class="title pb-15">
                   <h3>Avis</h3>
@@ -94,8 +87,8 @@
                             {{ avi.contenu }}
                           </p>
                         </div>
-                        <div class="comment-replay">
-                          <a href="#">Reply</a>
+                        <div class="comment-description pt-20">
+                          <p>review of this event : {{ avi.status }}</p>
                         </div>
                       </div>
                     </ng-container>
@@ -118,11 +111,18 @@
               >
                 <div data-countdown="2019/08/01"></div>
                 <div class="events-coundwon-btn pt-30">
-                  <a
-                    [routerLink]="['/create-reservation', eventData.id]"
-                    class="main-btn"
-                    >Book Now</a
+                  <ng-container
+                    *ngIf="eventData.nbrPlace > 0; else placesCompletes"
                   >
+                    <a
+                      [routerLink]="['/create-reservation', eventData.id]"
+                      class="main-btn"
+                      >Book Now</a
+                    >
+                  </ng-container>
+                  <ng-template #placesCompletes>
+                    <a class="main-btn" style="color: red">no places</a>
+                  </ng-template>
                 </div>
                 <div class="events-coundwon-btn pt-30">
                   <a
@@ -142,23 +142,23 @@
                       </div>
                       <div class="cont">
                         <h6>Start Time</h6>
-                        <span>{{ eventData.date_deb | date : "HH:mm" }}</span>
+                        <span>{{ eventData.date_fin | date : "medium" }}</span>
                       </div>
                     </div>
                     <!-- single address -->
                   </li>
-                  <li>
+                  <!--<li>
                     <div class="single-address">
                       <div class="icon">
                         <i class="fa fa-bell-slash"></i>
                       </div>
                       <div class="cont">
                         <h6>Finish Time</h6>
-                        <span>{{ eventData.date_fin | date : "HH:mm" }}</span>
+                        <span>{{ eventData.date_fin | date : "medium" }}</span>
                       </div>
                     </div>
-                    <!-- single address -->
-                  </li>
+                  
+                  </li>-->
                   <li>
                     <div class="single-address">
                       <div class="icon">
@@ -166,7 +166,7 @@
                       </div>
                       <div class="cont">
                         <h6>Address</h6>
-                        <span>Street Park ,America</span>
+                        <span>{{ eventData.lieu }}</span>
                       </div>
                     </div>
                     <!-- single address -->
