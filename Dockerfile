@@ -1,19 +1,27 @@
-# Use an appropriate base image with JDK installed
-FROM openjdk:11-jdk-slim
+# Use the official Maven image to build the project
+FROM maven:3.8.4-openjdk-17 AS build
 
-# Install Ant
-RUN apt-get update && apt-get install -y ant && rm -rf /var/lib/apt/lists/*
-
-# Set the working directory
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the necessary build files and directories
-COPY build.xml ./
-COPY codenameone_settings.properties ./
-COPY CodeNameOneBuildClient.jar ./
+# Copy the pom.xml and the source code to the container
+COPY pom.xml .
 COPY src ./src
-COPY lib ./lib
-COPY native ./native
 
-# Command to run Ant build
-CMD ["ant", "clean", "build-for-ios-device"]
+# Build the project
+RUN mvn clean install
+
+# Use the official OpenJDK image as the base image for the final stage
+FROM openjdk:17-jre-slim
+
+# Set the working directory inside the container
+WORKDIR /app
+
+# Copy the built jar file from the build stage
+COPY --from=build /app/target/e-learning-back-0.0.1-SNAPSHOT.jar /app/e-learning-back-0.0.1-SNAPSHOT.jar
+
+# Expose the port on which the application runs
+EXPOSE 8080
+
+# Define the command to run the application
+CMD ["java", "-jar", "e-learning-back-0.0.1-SNAPSHOT.jar"]
