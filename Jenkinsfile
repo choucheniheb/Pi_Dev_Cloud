@@ -24,7 +24,11 @@ pipeline {
         stage('Test') {
             steps {
                 script {
-                   sh 'mvn test'
+                    try {
+                        sh 'mvn clean test'
+                    } catch (Exception e) {
+                        error "Tests failed: ${e.message}"
+                    }
                 }
             }
         }
