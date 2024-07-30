@@ -6,29 +6,52 @@ pipeline {
         DOCKER_IMAGE_NAME = 'imagetest'
         DOCKER_REGISTRY = 'https://index.docker.io/v1/'
         DOCKER_CREDENTIALS_ID = 'dockerHub'
+        SKIP_TESTS = "${env.SKIP_TESTS}" // Set this environment variable to control skipping tests
+        
+
     }
 
     stages {
-        // stage('Checkout') {
+         stage('Checkout') {
+            steps {
+                // Checkout the code from the Git repository and specify the branch name if it's not master
+                git branch: 'test', url: 'https://github.com/choucheniheb/Pi_Dev_Cloud.git'
+            }
+        }
+        
+        
+        stage('Build') {
+            steps {
+                // Build the Java project using Maven and skip tests
+                sh 'mvn clean install -DskipTests'
+            }
+        }
+
+        // stage('Test') {
+        //     when {
+        //         expression {
+        //             return !env.SKIP_TESTS?.toBoolean() // Skip this stage if SKIP_TESTS is set to true
+        //         }
+        //     }
         //     steps {
-        //         // Checkout the code from the repository
-        //         git 'https://github.com/choucheniheb/Pi_Dev_Cloud.git'
+        //         // Run tests for the Java project
+        //         sh 'mvn test'
         //     }
         // }
 
-        stage('Build') {
-            steps {
-                // Build the Java project using Maven
-                sh 'mvn clean install'
-            }
-        }
+        // stage('Build') {
+        //     steps {
+        //         // Build the Java project using Maven
+        //         sh 'mvn clean install'
+        //     }
+        // }
 
-        stage('Test') {
-            steps {
-                // Run tests for the Java project
-                sh 'mvn test'
-            }
-        }
+        // stage('Test') {
+        //     steps {
+        //         // Run tests for the Java project
+        //         sh 'mvn test'
+        //     }
+        // }
 
         stage('Build Docker Image') {
             steps {
