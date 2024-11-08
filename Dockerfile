@@ -1,28 +1,13 @@
-# Stage 1: Build the Angular app
+# Step 1: Build the Angular application
 FROM node:20.9.0 AS build
-
 WORKDIR /app
-
-# Copy package.json and package-lock.json
-COPY package*.json ./
-
-# Install dependencies
+COPY package.json package-lock.json ./
 RUN npm install --force
-
-# Copy the Angular project files
 COPY . .
-
-# Build the Angular app
 RUN npm run build --prod
 
-# Stage 2: Serve the app using an Nginx server
+# Step 2: Serve the application with Nginx
 FROM nginx:alpine
-
-# Copy the built app from the previous stage to the Nginx public directory
-COPY --from=build /app/dist/<angular-app-name> /usr/share/nginx/html
-
-# Expose port 80
+COPY --from=build /app/dist/your-angular-app /usr/share/nginx/html
 EXPOSE 80
-
-# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
